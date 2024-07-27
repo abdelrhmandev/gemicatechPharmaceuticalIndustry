@@ -1,0 +1,23 @@
+<?php
+return [
+'title'                     => 'Product Title',
+'edit'                      => 'Edit Product',
+'view'                      => 'View Product',
+'add'                       => 'Add Product',
+'delete'                    => 'Delete Product',
+'select'                    => 'Select Product',
+'select_multi'              =>' Select Products',
+'parent'                    => 'Parent Product',
+'plural'                    => 'Products',
+'singular'                  => 'Product',
+'deleteMessageSuccess'      => 'Product has been deleted successfully',
+'MulideleteMessageSuccess'  => 'Products has been deleted successfully',
+'delete_selected'           => 'Delete Selected Product(s)',
+'not_delete_selected'       => 'Product(s) not deleted',
+'deleteMessageError'        => 'Error in delete Product',
+'MultideleteMessageError'   => 'Error in delete Products',
+'updateMessageSuccess'      => 'Product has been updated successfully',
+'updateMessageError'        => 'Error in update Product',
+'storeMessageSuccess'       => 'Product has been created successfully',
+'storeMessageError'         => 'Error in Store Product',
+];

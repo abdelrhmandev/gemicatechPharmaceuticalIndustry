@@ -1,0 +1,172 @@
+<?php
+namespace App\Http\Controllers\backend;
+use DataTables;
+use Carbon\Carbon;
+use App\Models\Page;
+use App\Models\Block;
+use App\Traits\Functions;
+use App\Traits\UploadAble;
+use Illuminate\Support\Str;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\File;
+use App\Http\Requests\backend\PageRequest;
+
+class PageController extends Controller
+{
+    use UploadAble, Functions;
+    public function __construct()
+    {
+        $this->ROUTE_PREFIX = 'admin.pages';
+        $this->TRANS = 'page';
+        $this->UPLOADFOLDER = 'pages';
+    }
+
+    public function index(Request $request)
+    {
+        $model = Page::select('id', 'title','sub_title', 'image', 'created_at');
+        if ($request->ajax()) {
+            return Datatables::of($model)
+                ->addIndexColumn()
+
+                ->editColumn('image', function ($row) {
+                    return $this->dataTableGetImage($row, $this->ROUTE_PREFIX . '.edit');
+                })
+
+                ->editColumn('title', function ($row) {
+                    return '<a href=' . route($this->ROUTE_PREFIX . '.edit', $row->id) . " class=\"text-gray-800 text-hover-primary fs-5 fw-bold mb-1\" data-kt-item-filter" . $row->id . "=\"item\">" . $row->title . '</a>';
+                })
+
+
+                ->editColumn('created_at', function ($row) {
+                    return $this->dataTableGetCreatedat($row->created_at);
+                })
+
+                ->editColumn('actions', function ($row) {
+                    return $this->dataTableEditRecordAction($row, $this->ROUTE_PREFIX);
+                })
+
+                ->rawColumns(['image','title','actions','created_at', 'created_at.display'])
+                ->make(true);
+        }
+        if (view()->exists('backend.pages.index')) {
+            $compact = [
+                'trans' => $this->TRANS,
+                'createRoute' => route($this->ROUTE_PREFIX . '.create'),
+                'storeRoute' => route($this->ROUTE_PREFIX . '.store'),
+                'destroyMultipleRoute' => route($this->ROUTE_PREFIX . '.destroyMultiple'),
+                'listingRoute' => route($this->ROUTE_PREFIX . '.index'),
+            ];
+            return view('backend.pages.index', $compact);
+        }
+    }
+    public function create()
+    {
+        if (view()->exists('backend.pages.create')) {
+            $compact = [
+                'trans' => $this->TRANS,
+                'blocks' => Block::select('id','title','description')->latest()->get(),
+                'listingRoute' => route($this->ROUTE_PREFIX . '.index'),
+                'storeRoute' => route($this->ROUTE_PREFIX . '.store'),
+            ];
+            return view('backend.pages.create', $compact);
+        }
+    }
+    public function store(PageRequest $request)
+    {
+        try {
+            DB::beginTransaction();
+
+            $validated = $request->validated();
+            $validated['image'] = !empty($validated['image']) ? $this->uploadFile($validated['image'], $this->UPLOADFOLDER) : null;
+
+
+            $page = Page::create($validated);
+
+
+            $page->block()->sync((array) $request->input('block_id'));
+
+
+
+
+            if ($page) {
+                $arr = ['msg' => __($this->TRANS . '.' . 'storeMessageSuccess'), 'status' => true];
+            }
+            DB::commit();
+        } catch (\Exception $e) {
+            DB::rollback();
+            $arr = ['msg' => __($this->TRANS . '.' . 'storeMessageError'), 'status' => false];
+        }
+        return response()->json($arr);
+    }
+
+    public function edit(Page $page)
+    {
+        if (view()->exists('backend.pages.edit')) {
+            $compact = [
+                'blocks' => Block::select('id','title','description')->latest()->get(),
+                'updateRoute' => route($this->ROUTE_PREFIX . '.update', $page->id),
+                'row' => $page,
+                'destroyRoute' => route($this->ROUTE_PREFIX . '.destroy', $page->id),
+                'redirect_after_destroy' => route($this->ROUTE_PREFIX . '.index'),
+                'trans' => $this->TRANS,
+            ];
+
+            return view('backend.pages.edit', $compact);
+        }
+    }
+
+    /////////////
+    public function update(PageRequest $request, Page $page)
+    {
+        try {
+            DB::beginTransaction();
+            $validated = $request->validated();
+            $image = $page->image;
+            if (!empty($request->file('image'))) {
+                $page->image && File::exists(public_path($page->image)) ? $this->unlinkFile($page->image) : '';
+                $image = $this->uploadFile($request->file('image'), $this->UPLOADFOLDER);
+            }
+            if (isset($request->drop_image_checkBox) && $request->drop_image_checkBox == 1) {
+                $this->unlinkFile($page->image);
+                $image = null;
+            }
+            $validated['image'] = $image;
+            $page->update($validated);
+            $page->block()->sync((array) $request->input('block_id'));
+
+            $arr = ['msg' => __($this->TRANS . '.' . 'updateMessageSuccess'), 'status' => true];
+            DB::commit();
+        } catch (\Exception $e) {
+            DB::rollback();
+            $arr = ['msg' => __($this->TRANS . '.' . 'updateMessageError'), 'status' => false];
+        }
+        return response()->json($arr);
+    }
+    public function destroy(Page $page)
+    {
+        $page->image ? $this->unlinkFile($page->image) : '';
+        if ($page->delete()) {
+            $arr = ['msg' => __($this->TRANS . '.' . 'deleteMessageSuccess'), 'status' => true];
+        } else {
+            $arr = ['msg' => __($this->TRANS . '.' . 'deleteMessageError'), 'status' => false];
+        }
+        return response()->json($arr);
+    }
+    public function destroyMultiple(Request $request)
+    {
+        $ids = explode(',', $request->ids);
+        $pages = Page::whereIn('id', $ids); // Check
+        foreach ($pages->get() as $page) {
+            $page->image ? $this->unlinkFile($page->image) : '';
+        }
+        if ($pages->delete()) {
+            $arr = ['msg' => __($this->TRANS . '.' . 'MulideleteMessageSuccess'), 'status' => true];
+        } else {
+            $arr = ['msg' => __($this->TRANS . '.' . 'MiltideleteMessageError'), 'status' => false];
+        }
+        return response()->json($arr);
+    }
+}

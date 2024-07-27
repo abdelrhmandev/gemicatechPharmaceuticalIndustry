@@ -1,0 +1,23 @@
+<?php
+return [
+'title'                     => 'Social Media Title',
+'edit'                      => 'Edit Social Media',
+'view'                      => 'View Social Media',
+'add'                       => 'Add Social Media',
+'delete'                    => 'Delete Social Media',
+'select'                    => 'Select Social Media',
+'select_multi'              =>' Select Social Medias',
+'parent'                    => 'Parent Social Media',
+'plural'                    => 'SocialMedia',
+'singular'                  => 'Social Media',
+'deleteMessageSuccess'      => 'Social Media has been deleted successfully',
+'MulideleteMessageSuccess'  => 'Social Medias has been deleted successfully',
+'delete_selected'           => 'Delete Selected Social Media(s)',
+'not_delete_selected'       => 'Social Media(s) not deleted',
+'deleteMessageError'        => 'Error in delete Social Media',
+'MultideleteMessageError'   => 'Error in delete Social Medias',
+'updateMessageSuccess'      => 'Social Media has been updated successfully',
+'updateMessageError'        => 'Error in update Social Media',
+'storeMessageSuccess'       => 'Social Media has been created successfully',
+'storeMessageError'         => 'Error in Store Social Media',
+];

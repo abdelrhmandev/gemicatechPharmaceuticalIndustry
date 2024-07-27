@@ -1,0 +1,18 @@
+<?php
+namespace App\Models;
+use Illuminate\Database\Eloquent\Model;
+class Slider extends Model
+{
+
+	protected $table = 'sliders';
+    protected $guarded = ['id'];
+
+
+public $timestamps = true;
+
+
+    protected $fillable = [
+		'title','description','image','link'
+	];
+
+}

@@ -1,0 +1,23 @@
+<?php
+return [
+'title'                     => 'Industry Title',
+'edit'                      => 'Edit Industry',
+'add'                       => 'Add Industry',
+'delete'                    => 'Delete Industry',
+'select'                    => 'Select Industry',
+'select_multi'              =>' Select Industries',
+'parent'                    => 'Parent Industry',
+'plural'                    => 'Industries',
+'singular'                  => 'Industry',
+'exportMessageSuccess'      => 'Industries has been exported successfully',
+'deleteMessageSuccess'      => 'Industry has been deleted successfully',
+'MulideleteMessageSuccess'  => 'Industries has been deleted successfully',
+'delete_selected'           => 'Delete Selected Industr(ies)',
+'not_delete_selected'       => 'Industr(ies) not deleted',
+'deleteMessageError'        => 'Error in delete Industry',
+'MultideleteMessageError'   => 'Error in delete Industries',
+'updateMessageSuccess'      => 'Industry has been updated successfully',
+'updateMessageError'        => 'Error in update Industry',
+'storeMessageSuccess'       => 'Industry has been created successfully',
+'storeMessageError'         => 'Error in Store Industry',
+];
