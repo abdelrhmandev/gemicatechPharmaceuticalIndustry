@@ -19,7 +19,7 @@
         <div class="card mb-5 mb-xl-10">
             <div class="card-header border-0">
                 <div class="card-title m-0">
-                    <h3 class="fw-bold m-0">{{  __('site.edit') . ' ' . __('site.profile') }}</h3>
+                    <h3 class="fw-bold m-0">{{ __('site.edit') . ' ' . __('site.profile') }}</h3>
                 </div>
             </div>
             <form id="EditPorfile" data-route-url="{{ $updateRoute }}" class="form"
@@ -111,14 +111,18 @@
                         <div class="fv-row fl">
                             <label class="required form-label" for="mobile">{{ __('site.mobile') }}</label>
                             <input type="text" class="form-control form-control-lg form-control-solid" id="mobile"
-                                placeholder="{{ __('site.mobile') }}" name="mobile" required data-fv-numeric="true" maxlength="20"
-                                value="{{ Auth::guard('admin')->user()->mobile }}"
+                                placeholder="{{ __('site.mobile') }}" name="mobile" required data-fv-numeric="true"
+                                maxlength="20" value="{{ Auth::guard('admin')->user()->mobile }}"
                                 data-fv-numeric___message="{{ __('validation.numeric', ['attribute' => 'mobile' . '&nbsp;']) }}"
                                 data-fv-not-empty___message="{{ __('validation.required', ['attribute' => 'mobile' . '&nbsp;']) }}" />
                         </div>
                         <div class="fv-row fl">
                             <label class="form-label" for="roles">{{ __('role.plural') }}</label>
-                            <h1>{{  Auth::guard('admin')->user()->getRoleNames() }}</h1>
+                            <h1>
+                                @foreach (Auth::guard('admin')->user()->getRoleNames() as $v)
+                                    {{ $v }}
+                                @endforeach
+                            </h1>
                         </div>
                         <div class="notice d-flex bg-light-primary rounded border-primary border border-dashed mb-9 p-6">
                             <i class="ki-outline ki-design-1 fs-2tx text-primary me-4"></i>

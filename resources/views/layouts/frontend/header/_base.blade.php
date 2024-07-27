@@ -1,5 +1,4 @@
-  <!-- ======= Header ======= -->
-  <header id="header" class="d-flex align-items-center">
+ <header id="header" class="d-flex align-items-center">
       <div class="container d-flex justify-content-between align-items-center">
           <div class="logo">
               <a href="index.html"><img src="assets/img/Logo-01.png" alt="" class="img-fluid"></a>

@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\backend\ProductController;
 
 Route::get('/', function () {
-    // return view('frontend.welcome');
+    return view('frontend.home');
 });
 
 Auth::routes();
