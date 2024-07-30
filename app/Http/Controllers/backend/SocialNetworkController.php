@@ -98,11 +98,10 @@ class SocialNetworkController extends Controller
     public function destroy(SocialNetWork $socialnetwork)
     {
         if ($socialnetwork->delete()) {
-            $arr = ['success' => __($this->TRANS . '.' . 'deleteMessageSuccess')];
+            $arr = ['msg' => __($this->TRANS . '.' . 'deleteMessagemsg')];
         } else {
-            $arr = ['error' => __($this->TRANS . '.' . 'deleteMessageError')];
+            $arr = ['msg' => __($this->TRANS . '.' . 'deleteMessageError')];
         }
-
-        return redirect()->route($this->ROUTE_PREFIX . '.index')->with($arr);
+        return response()->json($arr);
     }
 }

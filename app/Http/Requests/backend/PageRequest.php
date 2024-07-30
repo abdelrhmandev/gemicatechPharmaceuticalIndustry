@@ -23,7 +23,7 @@ class PageRequest extends FormRequest
         $rules['title']             = 'required|unique:pages,title'.$id;
         $rules['slug']              = 'required|unique:pages,slug'.$id;
         $rules['sub_title']         = 'nullable|unique:pages,sub_title'.$id;
-        $rules['description']       = 'nullable|max:500';
+        $rules['description']       = 'nullable';
         $rules['image']             = 'nullable|max:1000|mimes:jpeg,bmp,png,gif'; // max size 1 MB
         $rules['block_id']          = 'nullable|exists:blocks,id';
         return $rules;

@@ -1,15 +1,4 @@
-$("#title").keyup(function() {
-    var Text = $(this).val();
-    var slug = Text
-        .toLowerCase()
-        .replace(/\s+/g, '-')
-        .replace(/[^\w\-]+/g, '')
-        .replace(/^-+/, '')
-        .replace(/-+$/, '');
-    $("#slug").val(slug);
-});
-
-function handleFormSubmitFunc(formId) {
+function handleFormSubmitFunc(formId,isRichText=null) {
     const target = document.getElementById('status');
     const select = document.getElementById('status_select');
     const statusClasses = ['bg-success', 'bg-warning', 'bg-danger'];
@@ -86,6 +75,9 @@ function handleFormSubmitFunc(formId) {
     // Handle submit button
     submitButton.addEventListener('click', e => {
         e.preventDefault();
+        isRichText ? tinyMCE.triggerSave() : '';
+
+
         // Validate form before submit
         if (validator) {
             validator.validate().then(function(status) {
@@ -173,6 +165,15 @@ function handleFormSubmitFunc(formId) {
         }
     })
 }
-
+$("#title").keyup(function() {
+    var Text = $(this).val();
+    var slug = Text
+        .toLowerCase()
+        .replace(/\s+/g, '-')
+        .replace(/[^\w\-]+/g, '')
+        .replace(/^-+/, '')
+        .replace(/-+$/, '');
+    $("#slug").val(slug);
+});
 
 

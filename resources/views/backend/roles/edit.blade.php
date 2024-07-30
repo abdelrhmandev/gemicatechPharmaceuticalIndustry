@@ -57,7 +57,7 @@
                             </div>
                         </div>
                     </div>
-                    {{--  <div class="card card-flush py-4">
+                  <div class="card card-flush py-4">
                         <div class="card-header">
                             <div class="card-title">
                                 <h2>{{ __('permission.plural') }} [{{ $row->permissions->count() }}]</h2>
@@ -69,7 +69,7 @@
                                 @foreach ($permissions as $permission)
                                     <div class="form-check form-check-custom form-check-solid mb-2">
                                         <input class="form-check-input" type="checkbox" name="permissions[]"
-                                            value="{{ $permission->id }}"
+                                            value="{{ $permission->name }}"
                                             @if (in_array($permission->id, $row->permissions->pluck('id')->toArray())) checked @endif />
                                         <label class="form-check-label" for="flexCheckDefault">
                                                 {{ $permission->name }}
@@ -78,7 +78,7 @@
                                 @endforeach
                             </div>
                         </div>
-                    </div>  --}}
+                    </div>
                 </div>
                 <x-backend.btns.button :destroyRoute="$destroyRoute" :redirectRoute="$redirect_after_destroy" :row="$row" :trans="$trans" />
             </div>

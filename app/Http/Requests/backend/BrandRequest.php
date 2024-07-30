@@ -21,6 +21,7 @@ class BrandRequest extends FormRequest
         ///MULTI Languages Inputs Validation///////////
         $id                         = $this->request->get('id') ? ',' . $this->request->get('id') : '';
         $rules['title']             = 'required|unique:brands,title'.$id;
+        $rules['slug']              = 'required|unique:brands,slug'.$id;
         $rules['description']       = 'nullable|max:500';
         $rules['image']             = 'nullable|max:1000|mimes:jpeg,bmp,png,gif'; // max size 1 MB
 

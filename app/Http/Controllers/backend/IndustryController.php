@@ -25,7 +25,7 @@ class IndustryController extends Controller
 
     public function index(Request $request)
     {
-        $model = Industry::select('id', 'title', 'color', 'icon', 'created_at')->WithCount('product');
+        $model = Industry::select('id', 'title','image', 'color', 'icon', 'created_at')->WithCount('product');
         if ($request->ajax()) {
             return Datatables::of($model)
                 ->addIndexColumn()
@@ -36,6 +36,10 @@ class IndustryController extends Controller
 
                 ->editColumn('title', function ($row) {
                     return '<a href=' . route($this->ROUTE_PREFIX . '.edit', $row->id) . " class=\"text-gray-800 text-hover-primary fs-5 fw-bold mb-1\" data-kt-item-filter" . $row->id . "=\"item\">" . $row->title . '</a>';
+                })
+
+                ->editColumn('color', function ($row) {
+                    return '<h1 style="color:'.$row->color.';">.</h1>';
                 })
 
 
@@ -53,7 +57,7 @@ class IndustryController extends Controller
                     return $this->dataTableEditRecordAction($row, $this->ROUTE_PREFIX);
                 })
 
-                ->rawColumns(['image', 'title','product_count', 'actions', 'created_at', 'created_at.display'])
+                ->rawColumns(['image', 'title','color','product_count', 'actions', 'created_at', 'created_at.display'])
                 ->make(true);
         }
         if (view()->exists('backend.industries.index')) {

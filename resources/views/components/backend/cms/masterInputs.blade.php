@@ -17,20 +17,13 @@
                         value="{{ $row->slug ?? '' }}" />
                 </div>
                 @endif
-                @if ($showDescription && $richTextArea == 1)
+                @if ($showDescription)
                 <div class="fv-row">
                     <!--begin::Label-->
                     <label class="form-label"
                         for="description">{{ __('site.description') }}</label>
-                    <textarea placeholder="{{ __('site.description') }}" rows="4" cols="30" id="description" name="description" class="tinymce @error('description') is-invalid @enderror" />{{ $row->description ?? '' }}</textarea>
+                    <textarea placeholder="{{ __('site.description') }}" rows="4" cols="30" id="description" name="description" class="form-control form-control-solid {{ $richTextArea == 1 ? 'tinyEditor':'' }} @error('description') is-invalid @enderror">{{ $row->description ?? '' }}</textarea>
                 </div>
-            @elseif($showDescription && $richTextArea == 0)
-                    <div class="d-flex flex-column">
-                        <label class="form-label"
-                            for="description">{{ __('site.description') }}</label>
-                        <textarea placeholder="{{ __('site.description') }}" class="form-control form-control-solid tinyEditor" rows="4"
-                            id="description" name="description" placeholder="">{{ $row->description ?? '' }}</textarea>
-                    </div>
                 @endif
 
 

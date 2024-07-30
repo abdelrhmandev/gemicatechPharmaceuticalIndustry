@@ -12,8 +12,7 @@
 @stop
 @section('style')
     <link href="{{ asset('assets/backend/css/custom.css') }}" rel="stylesheet" type="text/css" />
-    <link href="{{ asset('assets/backend/css/bootstrapicons-iconpicker.css') }}" rel="stylesheet" type="text/css" />
-    <link rel="stylesheet" href="{{ asset('assets/backend/plugins/custom/file-upload/image-uploader.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/backend/css/icon-picker-aesthetic.style.css') }}">
 @stop
 @section('content')
     <div id="kt_content_container" class="container-xxl">
@@ -48,43 +47,11 @@
     <script src="{{ asset('assets/backend/plugins/custom/datatables/datatables.bundle.js') }}"></script>
     <script src="{{ asset('assets/backend/js/widgets.bundle.js') }}"></script>
     <script src="{{ asset('assets/backend/js/custom/handleFormSubmit.js') }}"></script>
-    <script src="{{ asset('assets/backend/js/bootstrapicon-iconpicker.min.js')}}"></script>
     <script src="{{ asset('assets/backend/js/custom/deleteConfirmSwal.js') }}"></script>
-    <script>
-        $('.iconpicker').iconpicker({
-            // customize the icon picker with the following options
-            // THANKS FOR WATCHING!
-            title: 'Icon Picker',
-            selected: false,
-            defaultValue: false,
-            placement: "top",
-            collision: "none",
-            animation: true,
-            hideOnSelect: true,
-            showFooter: true,
-            searchInFooter: false,
-            mustAccept: false,
-            selectedCustomClass: "bg-primary",
-            fullClassFormatter: function(e) {
-                return e;
-            },
-            input: "input,.iconpicker-input",
-            inputSearch: false,
-            container: false,
-            component: ".input-group-addon,.iconpicker-component",
-            templates: {
-                popover: '<div class="iconpicker-popover popover" role="tooltip"><div class="arrow"></div>' +
-                    '<div class="popover-title"></div><div class="popover-content"></div></div>',
-                footer: '<div class="popover-footer"></div>',
-                buttons: '<button class="iconpicker-btn iconpicker-btn-cancel btn btn-default btn-sm">Cancel</button>' +
-                    ' <button class="iconpicker-btn iconpicker-btn-accept btn btn-primary btn-sm">Accept</button>',
-                search: '<input type="search" class="form-control iconpicker-search" placeholder="Type to filter" />',
-                iconpicker: '<div class="iconpicker"><div class="iconpicker-items"></div></div>',
-                iconpickerItem: '<a role="button" href="javascript:;" class="iconpicker-item"><i></i></a>'
-            }
-        });
+    <script src="{{ asset('assets/backend/js/custom/aesthetic-icon-picker.js') }}"></script>
 
-        // end of tiny editor
+    <script>
+    // end of tiny editor
         KTUtil.onDOMContentLoaded(function() {
             handleFormSubmitFunc('Edit{{ $trans }}');
         });

@@ -12,7 +12,13 @@ public $timestamps = true;
 
 
     protected $fillable = [
-		'title','description','image'
+		'title','description','image','brand'
 	];
+
+
+    public function products(): HasMany
+    {
+        return $this->hasMany(Product::class);
+    }
 
 }

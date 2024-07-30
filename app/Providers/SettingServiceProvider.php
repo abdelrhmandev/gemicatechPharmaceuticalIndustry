@@ -1,6 +1,4 @@
 <?php
-// app\Provider\SettingServiceProvider.php
-
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
@@ -26,11 +24,13 @@ class SettingServiceProvider extends ServiceProvider
      */
     public function boot(Factory $cache, Setting $settings)
     {
-        // $settings = $cache->remember('settings', 60, function() use ($settings){
-        //     // Laravel >= 5.2, use 'lists' instead of 'pluck' for Laravel <= 5.1
-        //     return $settings->pluck('value', 'label','key')->all();
-        // });
-        // config()->set('settings', $settings);
+
+        $settings = $cache->remember('settings', 60, function() use ($settings){
+            // Laravel >= 5.2, use 'lists' instead of 'pluck' for Laravel <= 5.1
+            return $settings->pluck('value','key')->all();
+        });
+        config()->set('settings', $settings);
+
     }
 }
 ?>

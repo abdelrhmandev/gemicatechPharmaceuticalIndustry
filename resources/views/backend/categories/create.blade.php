@@ -13,7 +13,6 @@
 @section('style')
     <link href="{{ asset('assets/backend/css/custom.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('assets/backend/css/bootstrapicons-iconpicker.css') }}" rel="stylesheet" type="text/css" />
-    <link rel="stylesheet" href="{{ asset('assets/backend/plugins/custom/file-upload/image-uploader.min.css') }}">
 @stop
 @section('content')
     <div id="kt_content_container" class="container-xxl">

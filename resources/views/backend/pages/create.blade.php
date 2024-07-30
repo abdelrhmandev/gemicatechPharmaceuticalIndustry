@@ -22,7 +22,7 @@
                 <div class="card card-flush py-0">
                     <div class="card-body pt-0">
                         <div class="d-flex flex-column gap-5 mt-5">
-                            <x-backend.cms.masterInputs :showDescription="1" :richTextArea="0" :showSlug="1" />
+                            <x-backend.cms.masterInputs :showDescription="1" :richTextArea="1" :showSlug="1" />
 
                             <div class="fv-row fl">
                                 <label class="form-label"
@@ -49,13 +49,23 @@
     <script src="{{ asset('assets/backend/plugins/custom/datatables/datatables.bundle.js') }}"></script>
     <script src="{{ asset('assets/backend/js/widgets.bundle.js') }}"></script>
     <script src="{{ asset('assets/backend/js/custom/handleFormSubmit.js') }}"></script>
-
+    <script src="{{ asset('assets/backend/plugins/custom/tinymce/tinymce.bundle.js') }}"></script>
     <script>
-
-
+        tinymce.init({
+            selector: '.tinyEditor',
+            menubar: false,
+            branding: false,
+            height: 300,
+            toolbar: ['styleselect fontselect fontsizeselect',
+                'undo redo | cut copy paste | bold italic | alignleft aligncenter alignright alignjustify',
+                'bullist numlist | outdent indent | blockquote subscript superscript | advlist | autolink | lists charmap | print preview |  code'
+            ],
+            plugins: 'advlist autolink link lists charmap print preview code',
+            extended_valid_elements: 'i[class]'
+        });
         // end of tiny editor
         KTUtil.onDOMContentLoaded(function() {
-            handleFormSubmitFunc('Add{{ $trans }}');
+            handleFormSubmitFunc('Add{{ $trans }}','richtext');
         });
     </script>
 @endpush

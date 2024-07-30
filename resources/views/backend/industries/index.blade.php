@@ -74,6 +74,7 @@
             </th>
             <th>{{ __('site.image') }}</th>
             <th>{{ __('site.title') }}</th>
+            <th>Color</th>
             <th>{{ __('product.plural') }}</th>
             <th class="text-primary w-100px">{{ __('site.created_at') }}</th>
             <th class="text-end min-w-100px noExport">{{ __('site.actions') }}</th>
@@ -101,6 +102,7 @@ var dynamicColumns = [ //as an array start from 0
 { data: 'id', name: 'id',exportable:false},
 { data: 'image', name: 'image',orderable: false},
 { data: 'title', name: 'title',orderable: false},
+{ data: 'color', name: 'color',orderable: false},
 { data: 'product_count', name: 'product_count',orderable: false},
 { data: 'created_at',name :'created_at', type: 'num', render: { _: 'display', sort: 'timestamp', order: 'desc'}}, // 6
 { data: 'actions' , name : 'actions' ,exportable:false,orderable: false,searchable: false},

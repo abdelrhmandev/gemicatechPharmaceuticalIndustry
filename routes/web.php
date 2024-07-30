@@ -1,15 +1,22 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\backend\ProductController;
+use App\Http\Controllers\frontend\BrandController;
 
-Route::get('/', function () {
-    return view('frontend.home');
-});
+use App\Http\Controllers\frontend\HomeController;
+use App\Http\Controllers\frontend\CategoryController;
+use App\Http\Controllers\frontend\IndustryController;
+
+
+
+Route::get('/', [HomeController::class, 'index'])->name('home');
+
+
+
+Route::get('/category/{slug}', [CategoryController::class, 'single'])->name('category');
+Route::get('/industry/{slug}', [IndustryController::class, 'single'])->name('industry');
+Route::get('/brand/{slug}', [BrandController::class, 'single'])->name('brand');
 
 Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
 
 require __DIR__.'/admin.php';

@@ -34,8 +34,7 @@
             <div class="bg-body d-flex flex-center rounded-4 w-md-600px p-10">
                 <div class="w-md-400px">
 
-
-
+{{ config('settings.site_title'); }}
 
                     <form id="login" method="POST" action="{{ route('admin.login.submit') }} " class="form w-100"
                         data-form-submit-error-message="{{ __('site.form_submit_error') }}"

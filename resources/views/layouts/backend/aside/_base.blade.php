@@ -2,7 +2,7 @@
     <!--begin::Brand-->
     <div class="aside-logo py-8" id="kt_aside_logo">
         <!--begin::Logo-->
-        <a href="../../demo6/dist/index.html" class="d-flex align-items-center">
+        <a href="{{ route('admin.dashboard')}}" class="d-flex align-items-center">
             <img alt="Logo" src="{{ asset(config('project.app.favicon')) }}" class="h-45px logo" />
         </a>
     </div>

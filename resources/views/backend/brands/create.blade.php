@@ -22,7 +22,7 @@
                 <div class="card card-flush py-0">
                     <div class="card-body pt-0">
                         <div class="d-flex flex-column gap-5 mt-5">
-                            <x-backend.cms.masterInputs :showDescription="1" :richTextArea="0" :showSlug="0" />
+                            <x-backend.cms.masterInputs :showDescription="1" :richTextArea="0" :showSlug="1" />
                         </div>
                     </div>
                 </div>

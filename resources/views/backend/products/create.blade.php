@@ -24,7 +24,7 @@
                 <div class="card card-flush py-0">
                     <div class="card-body pt-0">
                         <div class="d-flex flex-column gap-5 mt-5">
-                            <x-backend.cms.masterInputs :showDescription="1" :richTextArea="0" :showSlug="1" />
+                            <x-backend.cms.masterInputs :showDescription="1" :richTextArea="1" :showSlug="1" />
 
                             <div class="d-flex flex-column">
                                 <label class="form-label" for="brief">{{ __('site.brief') }}</label>
@@ -118,7 +118,7 @@
         });
         // end of tiny editor
         KTUtil.onDOMContentLoaded(function() {
-            handleFormSubmitFunc('Add{{ $trans }}');
+            handleFormSubmitFunc('Add{{ $trans }}','richtext');
         });
     </script>
 @endpush

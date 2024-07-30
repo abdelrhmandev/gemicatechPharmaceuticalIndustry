@@ -84,12 +84,7 @@ class PageController extends Controller
 
 
             $page = Page::create($validated);
-
-
             $page->block()->sync((array) $request->input('block_id'));
-
-
-
 
             if ($page) {
                 $arr = ['msg' => __($this->TRANS . '.' . 'storeMessageSuccess'), 'status' => true];
@@ -134,6 +129,7 @@ class PageController extends Controller
                 $image = null;
             }
             $validated['image'] = $image;
+
             $page->update($validated);
             $page->block()->sync((array) $request->input('block_id'));
 

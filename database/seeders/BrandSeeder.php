@@ -14,26 +14,22 @@ class BrandSeeder extends Seeder
      */
     public function run()
     {
+        DB::table('brands')->delete();
 
-      DB::table('brands')->delete();
-
-      DB::table('brands')->insert([
-
-        ['title'=>'CopleyPro','image'=>'uploads/brands/client-1.jpg'],
-        ['title'=>'BrookFieldPro','image'=>'uploads/brands/client-2.jpg'],
-        ['title'=>'EdmundBuhlerPro','image'=>'uploads/brands/client-3.jpg'],
-        ['title'=>'HosokawaAlpinePro','image'=>'uploads/brands/client-4.jpg'],
-        ['title'=>'HoribaPro','image'=>'uploads/brands/client-5.jpg'],
-        ['title'=>'LabspherePro','image'=>'uploads/brands/client-6.jpg'],
-        ['title'=>'RigakuPro','image'=>'uploads/brands/client-8.jpg'],
-        ['title'=>'SmegPro','image'=>'uploads/brands/client-9.jpg'],
-        ['title'=>'RudolphPro','image'=>'uploads/brands/client-10.jpg'],
-        ['title'=>'ArcastPro','image'=>'uploads/brands/client-11.jpg'],
-        ['title'=>'MemmrtPro','image'=>'uploads/brands/client-12.jpg'],
-        ['title'=>'ShowrPro','image'=>'uploads/brands/client-13.jpg'],
-      ]
-    );
-
-
+        DB::table('brands')->insert([
+            ['title' => 'CopleyPro', 'slug' => str::slug('CopleyPro'), 'image' => 'uploads/brands/client-1.png'],
+            ['title' => 'BrookFieldPro', 'slug' => str::slug('BrookFieldPro'), 'image' => 'uploads/brands/client-2.png'],
+            ['title' => 'EdmundBuhlerPro', 'slug' => str::slug('EdmundBuhlerPro'), 'image' => 'uploads/brands/client-3.png'],
+            ['title' => 'HosokawaAlpinePro', 'slug' => str::slug('HosokawaAlpinePro'), 'image' => 'uploads/brands/client-4.png'],
+            ['title' => 'HoribaPro', 'slug' => str::slug('HoribaPro'), 'image' => 'uploads/brands/client-5.png'],
+            ['title' => 'LabspherePro', 'slug' => str::slug('LabspherePro'), 'image' => 'uploads/brands/client-6.png'],
+            ['title' => 'Laqua', 'slug' => str::slug('Laqua'), 'image' => 'uploads/brands/client-7.png'],
+            ['title' => 'RigakuPro', 'slug' => str::slug('RigakuPro'), 'image' => 'uploads/brands/client-8.png'],
+            ['title' => 'SmegPro', 'slug' => str::slug('SmegPro'), 'image' => 'uploads/brands/client-9.png'],
+            ['title' => 'RudolphPro', 'slug' => str::slug('RudolphPro'), 'image' => 'uploads/brands/client-10.png'],
+            ['title' => 'ArcastPro', 'slug' => str::slug('ArcastPro'), 'image' => 'uploads/brands/client-11.png'],
+            ['title' => 'MemmrtPro', 'slug' => str::slug('MemmrtPro'), 'image' => 'uploads/brands/client-12.png'],
+            ['title' => 'ShowrPro', 'slug' => str::slug('ShowrPro'), 'image' => 'uploads/brands/client-13.png'],
+        ]);
     }
 }
