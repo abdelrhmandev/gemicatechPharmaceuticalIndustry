@@ -16,7 +16,7 @@ Route::get('/', [HomeController::class, 'index'])->name('home');
 
 
 Route::get('/categories/{slug?}', [CategoryController::class, 'index'])->name('categories.index');
-Route::get('/category/{slug}', [CategoryController::class, 'single'])->name('category');
+
 
 
 Route::get('/product/{slug}', [ProductController::class, 'single'])->name('product');

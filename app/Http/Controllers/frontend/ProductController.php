@@ -21,7 +21,7 @@ class ProductController extends Controller
 
         $compact = [
             'products' => $products,
-            'slug'     => $slug,
+            'slug'     => ucwords(str_replace('-', ' ', $slug)),
         ];
 
         return view('frontend.products.index', $compact);

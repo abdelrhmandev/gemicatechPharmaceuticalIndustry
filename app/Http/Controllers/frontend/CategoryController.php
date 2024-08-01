@@ -28,12 +28,4 @@ class CategoryController extends Controller
 
         return view('frontend.categories.index', $compact);
     }
-
-    public function single($slug)
-    {
-        $compact = [
-            'category' => Category::select('id', 'slug', 'title', 'image')->where('slug', $slug)->firstOrfail(),
-        ];
-        return view('frontend.categories.single', $compact);
-    }
 }
