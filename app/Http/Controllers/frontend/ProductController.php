@@ -7,6 +7,10 @@ class ProductController extends Controller
 {
     public function single($slug)
     {
+        $compact = [
+            'product' =>  Product::select('id','slug','title','image')->where('slug', $slug)->first(),
+        ];
+        return view('frontend.products.single', $compact);
     }
 
     public function prductsByCategory($slug)
@@ -17,6 +21,7 @@ class ProductController extends Controller
 
         $compact = [
             'products' => $products,
+            'slug'     => $slug,
         ];
 
         return view('frontend.products.index', $compact);
