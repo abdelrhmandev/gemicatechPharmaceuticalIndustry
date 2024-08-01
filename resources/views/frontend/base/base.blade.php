@@ -52,7 +52,6 @@
     <script src="{{ asset('assets/frontend/vendor/isotope-layout/isotope.pkgd.min.js') }}"></script>
     <script src="{{ asset('assets/frontend/vendor/swiper/swiper-bundle.min.js') }}"></script>
     <script src="{{ asset('assets/frontend/vendor/waypoints/noframework.waypoints.js') }}"></script>
-
     <script src="{{ asset('assets/frontend/js/main.js') }}"></script>
     @stack('scripts')
 </body>

@@ -20,4 +20,5 @@ return [
 'updateMessageError'        => 'Error in update Product',
 'storeMessageSuccess'       => 'Product has been created successfully',
 'storeMessageError'         => 'Error in Store Product',
+'empty'                     =>'Not Product added Yet',
 ];

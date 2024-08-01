@@ -69,13 +69,14 @@
                 <div class="row">
                     <div class="col-lg-6">
 
-                        @if($about->image)
-                            <img src="{{ asset($about->image) }}" title="{{ $about->title }}" class="img-fluid" alt="{{ $about->title }}">
+                        @if ($about->image)
+                            <img src="{{ asset($about->image) }}" title="{{ $about->title }}" class="img-fluid"
+                                alt="{{ $about->title }}">
                         @endif
                     </div>
                     <div class="col-lg-6 pt-4 pt-lg-0 content">
                         <h3>{{ $about->title }}</h3>
-                            {!! $about->description !!}
+                        {!! $about->description !!}
                     </div>
                 </div>
 

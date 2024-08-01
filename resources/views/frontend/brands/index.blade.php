@@ -19,7 +19,13 @@
         <!-- ======= Portfolio Section ======= -->
         <section id="portfolio" class="portfolio">
             <div class="container">
+
+
+
                 <div class="row portfolio-container">
+
+
+
                     @foreach ($industries as $industry)
                     <div class="col-lg-4 col-md-6 portfolio-item filter-lab filter-analytical">
                         <div class="portfolio-wrap">
@@ -36,7 +42,9 @@
                         </div>
                     </div>
                     @endforeach
+
                 </div>
+
             </div>
         </section><!-- End Portfolio Section -->
 

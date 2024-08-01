@@ -12,7 +12,6 @@
 @stop
 @section('style')
     <link href="{{ asset('assets/backend/css/custom.css') }}" rel="stylesheet" type="text/css" />
-    <link rel="stylesheet" href="{{ asset('assets/backend/css/icon-picker-aesthetic.style.css') }}">
 @stop
 @section('content')
     <div id="kt_content_container" class="container-xxl">
@@ -48,7 +47,6 @@
     <script src="{{ asset('assets/backend/js/widgets.bundle.js') }}"></script>
     <script src="{{ asset('assets/backend/js/custom/handleFormSubmit.js') }}"></script>
     <script src="{{ asset('assets/backend/js/custom/deleteConfirmSwal.js') }}"></script>
-    <script src="{{ asset('assets/backend/js/custom/aesthetic-icon-picker.js') }}"></script>
 
     <script>
     // end of tiny editor

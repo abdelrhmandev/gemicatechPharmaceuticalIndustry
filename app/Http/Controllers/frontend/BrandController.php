@@ -6,7 +6,12 @@ use App\Models\Brand;
 class BrandController extends Controller
 {
 
+
     public function single($slug){
-            dd('asdas');
+        $compact = [
+            'brand' =>  Brand::select('id','slug','title','image')->where('slug', $slug)->first(),
+        ];
+        return view('frontend.brands.single', $compact);
+
     }
 }

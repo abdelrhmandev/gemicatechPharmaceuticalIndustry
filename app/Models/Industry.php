@@ -12,7 +12,7 @@ public $timestamps = true;
 
 
     protected $fillable = [
-		'title','slug','description','image','color'
+		'title','slug','description','image','color','icon'
 	];
 
 

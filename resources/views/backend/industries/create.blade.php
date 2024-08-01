@@ -12,7 +12,11 @@
 @stop
 @section('style')
     <link href="{{ asset('assets/backend/css/custom.css') }}" rel="stylesheet" type="text/css" />
-    <link rel="stylesheet" href="{{ asset('assets/backend/css/icon-picker-aesthetic.style.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+
+        <link href="{{ asset('assets/backend/css/bootstrap-iconpicker.min.css') }}" rel="stylesheet" type="text/css" />
+
 
 @stop
 @section('content')
@@ -35,7 +39,8 @@
             <div class="d-flex flex-column flex-row-fluid gap-0 w-lg-400px gap-lg-5">
                 <x-backend.cms.image />
                 <x-backend.cms.colors />
-                <x-backend.cms.icons />
+                <x-backend.cms.iconsind />
+
 
 
             </div>
@@ -48,12 +53,11 @@
     <script src="{{ asset('assets/backend/plugins/custom/datatables/datatables.bundle.js') }}"></script>
     <script src="{{ asset('assets/backend/js/widgets.bundle.js') }}"></script>
     <script src="{{ asset('assets/backend/js/custom/handleFormSubmit.js') }}"></script>
-    <script src="{{ asset('assets/backend/js/custom/aesthetic-icon-picker.js') }}"></script>
 
-
+    <script type="text/javascript" src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.bundle.min.js"></script>
+    <script src="{{ asset('assets/backend/js/bootstrap-iconpicker.bundle.min.js')}}"></script>
 
     <script>
-
 
         // end of tiny editor
         KTUtil.onDOMContentLoaded(function() {

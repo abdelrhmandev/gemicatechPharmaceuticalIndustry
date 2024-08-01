@@ -7,10 +7,10 @@
           <div class="col-lg-3 col-md-6 footer-links">
             <h4>Useful Links</h4>
             <ul>
-              <li><i class="bx bx-chevron-right"></i> <a href="index.html">Home</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="index.html#about">About us</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="industries.html">Industries</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="support.html">Support</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="{{ route('home')}}">Home</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="{{ route('page','about-us')}}">About us</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="{{ route('industries')}}">Industries</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="{{ route('page','support')}}">Support</a></li>
             </ul>
           </div>
 

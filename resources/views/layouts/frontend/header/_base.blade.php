@@ -1,11 +1,11 @@
  <header id="header" class="d-flex align-items-center">
       <div class="container d-flex justify-content-between align-items-center">
           <div class="logo">
-              <a href="index.html"><img src="assets/img/Logo-01.png" alt="" class="img-fluid"></a>
+              <a href="{{ route('home')}}"><img src="{{ asset('assets/frontend/img/Logo-01.png')}}" alt="" class="img-fluid"></a>
           </div>
           <nav id="navbar" class="navbar">
               <ul>
-                  <li><a class="active" href="index.html">Home</a></li>
+                  <li><a class="active" href="{{ route('home')}}">Home</a></li>
                   <li class="dropdown"><a href="#"><span>Industries</span> <i class="bi bi-chevron-down"></i></a>
                       <ul>
                           <li><a href="industry-details.html">Pharmaceuticals</a></li>
@@ -19,12 +19,9 @@
                           <li><a href="industry-details.html">Environment & Energy</a></li>
                       </ul>
                   </li>
-                  <li><a href="categories.html">Products</a></li>
-                  <li><a href="support.html">Support</a></li>
-                  <li><a href="contact.html">Contact</a></li>
-                <!-- <li><a href="team.html">Team</a></li>
-                <li><a href="pricing.html">Pricing</a></li>
-                <li><a href="blog.html">Blog</a></li> -->
+                  <li><a href="{{ route('categories.index')}}">Products</a></li>
+                  <li><a href="{{ route('page','support')}}">Support</a></li>
+                  <li><a href="{{ route('page','contact-us')}}">Contact</a></li>
               </ul>
               <i class="bi bi-list mobile-nav-toggle"></i>
           </nav>

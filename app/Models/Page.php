@@ -12,7 +12,7 @@ public $timestamps = true;
 
 
     protected $fillable = [
-		'title','sub_title','slug','description','image'
+		'title','sub_title','slug','description','image','template'
 	];
 
     public function block(){
