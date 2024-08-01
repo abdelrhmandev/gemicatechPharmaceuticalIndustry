@@ -8,7 +8,7 @@
             <div class="container">
 
                 <ol>
-                    <li><a href="{{ route('industries') }}">Industries</a></li>
+                    <li><a href="{{ route('industries.index') }}">Industries</a></li>
 
                 </ol>
                 <h2>{{ $industry->title }}</h2>

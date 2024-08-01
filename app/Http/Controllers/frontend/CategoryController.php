@@ -32,7 +32,7 @@ class CategoryController extends Controller
     public function single($slug)
     {
         $compact = [
-            'category' => Category::select('id', 'slug', 'title', 'image')->where('slug', $slug)->first(),
+            'category' => Category::select('id', 'slug', 'title', 'image')->where('slug', $slug)->firstOrfail(),
         ];
         return view('frontend.categories.single', $compact);
     }

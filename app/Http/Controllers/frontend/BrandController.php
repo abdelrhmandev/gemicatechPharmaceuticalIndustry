@@ -9,7 +9,7 @@ class BrandController extends Controller
 
     public function single($slug){
         $compact = [
-            'brand' =>  Brand::select('id','slug','title','image')->where('slug', $slug)->first(),
+            'brand' =>  Brand::select('id','slug','title','image')->where('slug', $slug)->firstOrfail(),
         ];
         return view('frontend.brands.single', $compact);
 

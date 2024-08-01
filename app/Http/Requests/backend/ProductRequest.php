@@ -22,8 +22,8 @@ class ProductRequest extends FormRequest
         $id                         = $this->request->get('id') ? ',' . $this->request->get('id') : '';
         $rules['title']             = 'required|unique:products,title'.$id;
         $rules['slug']              = 'required|unique:products,slug'.$id;
-        $rules['description']       = 'nullable|max:500';
-        $rules['brief']             = 'nullable|max:500';
+        $rules['description']       = 'nullable';
+        $rules['brief']             = 'nullable';
         $rules['brand_id']          = 'nullable|exists:brands,id';
         $rules['category_id']       = 'nullable|exists:categories,id';
         $rules['sub_category_id']   = 'nullable|exists:categories,id';

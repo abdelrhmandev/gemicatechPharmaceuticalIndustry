@@ -8,7 +8,7 @@
     <section id="breadcrumbs" class="breadcrumbs pharmaceutical">
         <div class="container">
             <ol>
-                <li><a href="{{ route('industries') }}">Industries</a></li>
+                <li><a href="{{ route('industries.index') }}">Industries</a></li>
                 <li>Products</li>
             </ol>
             <h2>Categories</h2>

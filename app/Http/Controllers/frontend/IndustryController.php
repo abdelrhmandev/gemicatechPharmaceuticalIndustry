@@ -18,7 +18,7 @@ class IndustryController extends Controller
 
     public function single($slug){
         $compact = [
-            'industry' =>  Industry::select('id','slug','title','image')->where('slug', $slug)->first(),
+            'industry' =>  Industry::select('id','slug','title','image')->where('slug', $slug)->firstOrfail(),
         ];
         return view('frontend.industries.single', $compact);
 

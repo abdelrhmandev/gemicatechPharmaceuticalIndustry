@@ -9,7 +9,7 @@
             <ul>
               <li><i class="bx bx-chevron-right"></i> <a href="{{ route('home')}}">Home</a></li>
               <li><i class="bx bx-chevron-right"></i> <a href="{{ route('page','about-us')}}">About us</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="{{ route('industries')}}">Industries</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="{{ route('industries.index')}}">Industries</a></li>
               <li><i class="bx bx-chevron-right"></i> <a href="{{ route('page','support')}}">Support</a></li>
             </ul>
           </div>

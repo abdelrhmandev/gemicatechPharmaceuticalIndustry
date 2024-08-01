@@ -25,7 +25,7 @@ Route::get('/product/category/{slug}', [ProductController::class, 'prductsByCate
 
 
 Route::get('/industry/{slug}', [IndustryController::class, 'single'])->name('industry');
-Route::get('/industries/', [IndustryController::class, 'index'])->name('industries');
+Route::get('/industries/', [IndustryController::class, 'index'])->name('industries.index');
 
 
 Route::get('/brand/{slug}', [BrandController::class, 'single'])->name('brand');

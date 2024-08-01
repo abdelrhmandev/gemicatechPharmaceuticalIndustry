@@ -8,7 +8,7 @@ class ProductController extends Controller
     public function single($slug)
     {
         $compact = [
-            'product' =>  Product::select('id','slug','title','image')->where('slug', $slug)->first(),
+            'product' =>  Product::select('id','slug','title','image','brief','description')->where('slug', $slug)->firstOrfail(),
         ];
         return view('frontend.products.single', $compact);
     }
