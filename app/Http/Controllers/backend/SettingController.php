@@ -2,24 +2,61 @@
 namespace App\Http\Controllers\backend;
 use DataTables;
 use Carbon\Carbon;
-use App\Models\Brand;
-use App\Models\Product;
-use App\Models\Category;
-use App\Models\Industry;
+use App\Models\Setting;
 use App\Traits\Functions;
 use App\Traits\UploadAble;
 use Illuminate\Support\Str;
-use App\Models\ProductMedia;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
-use App\Http\Requests\backend\ProductRequest;
 
 class SettingController extends Controller
 {
-    public function index(Request $request){
+    use UploadAble, Functions;
+    public function __construct()
+    {
+        $this->ROUTE_PREFIX = 'admin.settings';
+        $this->TRANS = 'product';
+
+    }
+    public function index()
+    {
+        $compact = [
+            'trans' => $this->TRANS,
+            'createRoute' => route($this->ROUTE_PREFIX . '.create'),
+            'storeRoute' => route($this->ROUTE_PREFIX . '.store'),
+            'destroyMultipleRoute' => route($this->ROUTE_PREFIX . '.destroyMultiple'),
+            'listingRoute' => route($this->ROUTE_PREFIX . '.index'),
+            'settings' => Setting::all(),
+        ];
+        return view('backend.settings.index', $compact);
+    }
+
+    public function store(Request $request)
+    {
+
+        $data = [];
+        foreach ($request->field_id as $k => $v) {
+            $fieldId = intval($k);
+            $F_type = substr($k, strpos($k, '-') + 1);
+            if($F_type == 'image' || $F_type == 'file'){
+                if(!empty($v)){
+                    $fileNameToStore = Str::random(25) . '.' . $v->getClientOriginalExtension();
+                    $v->move(public_path('uploads/'), $fileNameToStore);
+                    $v = 'uploads/' . $fileNameToStore;
+                }
+            }else{
+                // $data[$fieldId] = $v;
+            }
+            \DB::table('settings')->where('id',$k)->update(['value'=>$v]);
+        }
+
+
+        return redirect()->route('admin.settings.index');
+
+
 
     }
 }

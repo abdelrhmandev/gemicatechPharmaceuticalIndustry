@@ -10,6 +10,7 @@ class Setting extends Model
     protected $guarded = [];
     protected $fillable = ['label','key', 'value','type'];
 
+    public $timestamps = false;
 
 
     public static function add($key, $val, $type = 'string')

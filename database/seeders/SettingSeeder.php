@@ -18,7 +18,7 @@ class SettingSeeder extends Seeder
                 'key'         => 'site_title',
                 'label'       => 'Site Title',
                 'value'       => 'Hello,New Site Title',
-                'type'        =>'text',
+                'type'        =>'textbox',
             ],[
                 'key'         => 'site_logo',
                 'label'       => 'Site logo',
@@ -28,7 +28,7 @@ class SettingSeeder extends Seeder
                 'key'         => 'site_description',
                 'label'       => 'Description',
                 'value'       => 'Hello,New Site Description',
-                'type'        =>'image',
+                'type'        =>'textarea',
             ]
             ,[
                 'key'         => 'site_favicon',
@@ -39,17 +39,17 @@ class SettingSeeder extends Seeder
                 'key'         => 'site_email',
                 'label'       => 'Email Address',
                 'value'       => 'admin@test.com',
-                'type'        =>'email'
+                'type'        => 'email'
             ],[
                 'key'         => 'site_contact_email',
                 'label'       => 'Contact form email address',
                 'value'       => 'contact@test.com',
-                'type'        =>'email'
+                'type'        => 'email'
             ], [
                 'key'         => 'site_phone',
                 'label'       => 'Phone',
                 'value'       => '+855122545',
-                'type'        =>'phone'
+                'type'        => 'phone'
             ],[
                 'key'         => 'site_mobile',
                 'label'       => 'Mobile',
