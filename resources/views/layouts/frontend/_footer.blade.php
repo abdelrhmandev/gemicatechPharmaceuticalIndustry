@@ -26,10 +26,7 @@
                 <div class="col-lg-3 col-md-6 footer-contact">
                     <h4>Contact Us</h4>
                     <p>
-                        6A Farouk Amer Street,<br>
-                        Block No. 1143,<br>
-                        Masaken Sheraton<br>
-                        Cairo, Egypt.<br>
+                    {{ $address->value }}
                     </p>
 
                 </div>
@@ -37,9 +34,9 @@
                 <div class="col-lg-3 col-md-6 footer-info">
                     <h3></h3>
                     <p>
-                        Phone: +20 222 696 466 <br>
-                        Mob.: +20 155 754 9651 <br>
-                        Email: info@gemicatech.com
+                        Phone: + {{ $phone->value }}<br>
+                        Mob.: +  {{ $mobile->value }}<br>
+                        Email:  {{ $email->value }}
                     </p>
                 </div>
 
