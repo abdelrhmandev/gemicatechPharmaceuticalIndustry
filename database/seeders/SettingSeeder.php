@@ -36,9 +36,14 @@ class SettingSeeder extends Seeder
                 'value'       => 'uploads/favicon.png',
                 'type'        =>'image',
             ],[
+                'key'         => 'site_email',
+                'label'       => 'Email Address',
+                'value'       => 'admin@test.com',
+                'type'        =>'email'
+            ],[
                 'key'         => 'site_contact_email',
                 'label'       => 'Contact form email address',
-                'value'       => 'admin@test.com',
+                'value'       => 'contact@test.com',
                 'type'        =>'email'
             ], [
                 'key'         => 'site_phone',

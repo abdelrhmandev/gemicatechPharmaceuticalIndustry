@@ -8,15 +8,9 @@
                   <li><a class="active" href="{{ route('home') }}">Home</a></li>
                   <li class="dropdown"><a href="#"><span>Industries</span> <i class="bi bi-chevron-down"></i></a>
                       <ul>
-                          <li><a href="industry-details.html">Pharmaceuticals</a></li>
-                          <li><a href="industry-details.html">Oil & Gas</a></li>
-                          <li><a href="industry-details.html">Fragrance & Flavour</a></li>
-                          <li><a href="industry-details.html">Sugar</a></li>
-                          <li><a href="industry-details.html">Food & Beverage</a></li>
-                          <li><a href=" industry-details.html">Cosmetics</a></li>
-                          <li><a href="industry-details.html">Material Processing</a></li>
-                          <li><a href="industry-details.html">Light Measurement</a></li>
-                          <li><a href="industry-details.html">Environment & Energy</a></li>
+                        @foreach ($industries as $industry)
+                          <li><a href="{{ route('industry',$industry->slug)}}">{{ $industry->title}}</a></li>
+                          @endforeach
                       </ul>
                   </li>
                   <li><a href="{{ route('categories.index')}}">Products</a></li>

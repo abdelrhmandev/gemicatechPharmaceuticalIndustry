@@ -39,7 +39,7 @@
                     <div class="info-box mb-4">
                         <i class="bx bx-map"></i>
                         <h3>Our Address</h3>
-                        <p>6A Farouk Amer Street, Block no. 1143, Masaken Sheraton Cairo, Egypt.</p>
+                        <p>{{ $address->value; }}</p>
                     </div>
                 </div>
 
@@ -47,7 +47,7 @@
                     <div class="info-box  mb-4">
                         <i class="bx bx-envelope"></i>
                         <h3>Email Us</h3>
-                        <p>info@gemicatech.com</p>
+                        <p>{{ $email->value }}</p>
                     </div>
                 </div>
 
@@ -55,7 +55,7 @@
                     <div class="info-box  mb-4">
                         <i class="bx bx-phone-call"></i>
                         <h3>Call Us</h3>
-                        <p>+20 222 696 466 &nbsp / &nbsp+20 155 754 9651</p>
+                        <p>{{ $mobile->value }}</p>
                     </div>
                 </div>
 

@@ -49,7 +49,7 @@
                 <div class="row">
                     @foreach ($categories as $category)
                         <div class="col-lg-3{{ $loop->first ? '' : ' mt-3 mt-lg-0' }}">
-                            <a href="{{ route('category', $category->slug) }}">
+                            <a href="{{ route('categories.index', $category->slug) }}">
                                 <div class="icon-box">
                                     <i class="{{ $category->icon }}"></i>
                                     <h3>{{ $category->title }}</h3>
