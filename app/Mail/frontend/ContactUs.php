@@ -30,7 +30,7 @@ class ContactUs extends Mailable
 	public function build()
 	{
 		$from = $this->mailData['email'];
-		$app_name = config('project.app.title');
+		$app_name = $site_name;
 
 		return $this->markdown('frontend.mails.Contactus')->with('mailData', $this->mailData)
 			->from($from, $app_name)

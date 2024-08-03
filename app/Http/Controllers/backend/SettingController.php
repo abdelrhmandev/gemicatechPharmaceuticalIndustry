@@ -18,8 +18,7 @@ class SettingController extends Controller
     public function __construct()
     {
         $this->ROUTE_PREFIX = 'admin.settings';
-        $this->TRANS = 'product';
-
+        $this->TRANS = 'setting';
     }
     public function index()
     {
@@ -36,27 +35,25 @@ class SettingController extends Controller
 
     public function store(Request $request)
     {
-
         $data = [];
         foreach ($request->field_id as $k => $v) {
             $fieldId = intval($k);
             $F_type = substr($k, strpos($k, '-') + 1);
-            if($F_type == 'image' || $F_type == 'file'){
-                if(!empty($v)){
+            if ($F_type == 'image' || $F_type == 'file') {
+                if (!empty($v)) {
                     $fileNameToStore = Str::random(25) . '.' . $v->getClientOriginalExtension();
                     $v->move(public_path('uploads/'), $fileNameToStore);
                     $v = 'uploads/' . $fileNameToStore;
                 }
-            }else{
+            } else {
                 // $data[$fieldId] = $v;
             }
-            \DB::table('settings')->where('id',$k)->update(['value'=>$v]);
+            \DB::table('settings')
+                ->where('id', $k)
+                ->update(['value' => $v]);
         }
 
-
-        return redirect()->route('admin.settings.index');
-
-
-
+        $arr = ['msg' => __($this->TRANS . '.' . 'updateMessageSuccess'), 'status' => true];
+        return response()->json($arr);
     }
 }

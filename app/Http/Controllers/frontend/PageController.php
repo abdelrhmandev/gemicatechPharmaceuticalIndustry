@@ -23,9 +23,7 @@ class PageController extends Controller
 
         $compact = [
             'page' => $page,
-            'address' => Setting::where('key','site_address')->first(),
-            'email' => Setting::where('key','site_email')->first(),
-            'mobile' => Setting::where('key','site_mobile')->first(),
+            'site_google_map_location' => Setting::where('key','site_google_map_location')->first()->value,
         ];
 
 

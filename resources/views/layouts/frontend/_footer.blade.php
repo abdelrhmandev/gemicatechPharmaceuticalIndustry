@@ -26,7 +26,7 @@
                 <div class="col-lg-3 col-md-6 footer-contact">
                     <h4>Contact Us</h4>
                     <p>
-                    {{ $address->value }}
+                    {{ $address }}
                     </p>
 
                 </div>
@@ -34,9 +34,9 @@
                 <div class="col-lg-3 col-md-6 footer-info">
                     <h3></h3>
                     <p>
-                        Phone: + {{ $phone->value }}<br>
-                        Mob.: +  {{ $mobile->value }}<br>
-                        Email:  {{ $email->value }}
+                        Phone: + {{ $phone }}<br>
+                        Mob.: +  {{ $mobile }}<br>
+                        Email:  {{ $email }}
                     </p>
                 </div>
 

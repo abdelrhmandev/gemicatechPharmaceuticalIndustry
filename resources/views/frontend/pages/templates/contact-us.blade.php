@@ -35,11 +35,21 @@
         <div class="container">
 
             <div class="row">
+
+
+                @if($page->description)
+                <div class="col-lg-12">
+                    <div class="mb-4">{!! $page->description !!}</div>
+                </div>
+                @endif
+
+
+
                 <div class="col-lg-6">
                     <div class="info-box mb-4">
                         <i class="bx bx-map"></i>
                         <h3>Our Address</h3>
-                        <p>{{ $address->value; }}</p>
+                        <p>{{ $address; }}</p>
                     </div>
                 </div>
 
@@ -47,7 +57,7 @@
                     <div class="info-box  mb-4">
                         <i class="bx bx-envelope"></i>
                         <h3>Email Us</h3>
-                        <p>{{ $email->value }}</p>
+                        <p>{{ $site_contact_us_page_email }}</p>
                     </div>
                 </div>
 
@@ -55,7 +65,7 @@
                     <div class="info-box  mb-4">
                         <i class="bx bx-phone-call"></i>
                         <h3>Call Us</h3>
-                        <p>{{ $mobile->value }}</p>
+                        <p>{{ $mobile }}</p>
                     </div>
                 </div>
 
@@ -65,7 +75,7 @@
 
                 <div class="col-lg-6 ">
                     <iframe
-                        class="mb-4 mb-lg-0"src="https://maps.google.com/maps?width=100%25&amp;height=600&amp;hl=en&amp;q=6A%20Farouk%20Amer,%20St.,%20Masaken,%20Cairo%20Governorate%2011799,%20Egypt+(Gemica%20Engineering)&amp;t=&amp;z=14&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"
+                        class="mb-4 mb-lg-0"src="https://maps.google.com/maps?q={{ $site_google_map_location}}&hl=es&z=14&amp;output=embed"
                         frameborder="0" style="border:0; width: 100%; height: 384px;" allowfullscreen></iframe>
                 </div>
 

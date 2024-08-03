@@ -27,9 +27,18 @@ class AppServiceProvider extends ServiceProvider
         View::share('industries', Industry::select('id', 'slug', 'title')->get());
         View::share('socialnetworks', SocialNetWork::select('id', 'icon', 'title', 'link')->get());
 
-        View::share('address', Setting::where('key', 'site_address')->first());
-        View::share('email', Setting::where('key', 'site_email')->first());
-        View::share('mobile', Setting::where('key', 'site_mobile')->first());
-        View::share('phone', Setting::where('key', 'site_phone')->first());
+
+        View::share('site_logo', Setting::where('key', 'site_logo')->first()->value);
+
+        View::share('site_title', Setting::where('key', 'site_title')->first()->value);
+
+        View::share('site_favicon', Setting::where('key', 'site_favicon')->first()->value);
+
+
+        View::share('address', Setting::where('key', 'site_address')->first()->value);
+        View::share('email', Setting::where('key', 'site_email')->first()->value);
+        View::share('site_contact_us_page_email', Setting::where('key', 'site_contact_us_page_email')->first()->value);
+        View::share('mobile', Setting::where('key', 'site_mobile')->first()->value);
+        View::share('phone', Setting::where('key', 'site_phone')->first()->value);
     }
 }
