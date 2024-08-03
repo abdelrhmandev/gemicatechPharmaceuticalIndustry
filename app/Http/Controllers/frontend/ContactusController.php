@@ -2,6 +2,7 @@
 namespace App\Http\Controllers\frontend;
 use Mail;
 use App\Models\Page;
+use App\Models\Setting;
 use Illuminate\Http\Request;
 use App\Mail\frontend\ContactUs;
 use App\Http\Controllers\Controller;
@@ -19,7 +20,8 @@ class ContactusController extends Controller
             'subject' => $request->get('subject'),
             'message' => $request->get('message'),
         ];
-        $sendMail = Mail::to('info@gemicatech.com')->send(new ContactUs($mailData));
+        $mail = Setting::where('key', 'site_email')->first()->value;
+        $sendMail = Mail::to($mail)->send(new ContactUs($mailData));
         if($sendMail){
             $arr = ['msg' => 'thanks for contacting us', 'status' => true];
         }else{

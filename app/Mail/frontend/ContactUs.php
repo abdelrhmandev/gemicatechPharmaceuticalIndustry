@@ -2,6 +2,7 @@
 
 namespace App\Mail\frontend;
 
+use App\Models\Setting;
 use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
@@ -30,7 +31,7 @@ class ContactUs extends Mailable
 	public function build()
 	{
 		$from = $this->mailData['email'];
-		$app_name = $site_name;
+		$app_name = Setting::where('key', 'site_title')->first()->value;
 
 		return $this->markdown('frontend.mails.Contactus')->with('mailData', $this->mailData)
 			->from($from, $app_name)
