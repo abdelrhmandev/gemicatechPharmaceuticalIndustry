@@ -159,10 +159,6 @@ class AdminController extends Controller
 
     public function update(AdminRequest $request, Admin $admin)
     {
-
-
-
-
         $avatar = $admin->avatar;
         if(!empty($request->file('avatar'))) {
             $avatar && File::exists(public_path($avatar)) ? $this->unlinkFile($avatar): '';
@@ -204,4 +200,36 @@ class AdminController extends Controller
         }
         return response()->json($arr);
     }
+
+
+    public function editpassword($userId){
+
+        if (view()->exists('backend.admins.editpassword')) {
+            $compact = [
+            'trans'                => $this->TRANS,
+            'row'                 =>  Admin::find($userId),
+            'updatePasswordRoute'  => route($this->ROUTE_PREFIX.'.updatepassword'),
+        ];
+            return view('backend.admins.editpassword',$compact);
+        }
+    }
+    public function updatepassword(Request $request){
+        $this->validate($request, [
+            'current_password' => 'required|string',
+            'new_password' => 'required|confirmed|min:8|string'
+        ]);
+        $auth = \Auth::guard('admin')->user();
+        if (!Hash::check($request->get('current_password'), $auth->password)) {
+            $arr = array('msg' => __('passwords.invalid_current'), 'status' => false);
+        }
+        if (Hash::check($request->get('current_password'), $auth->password)) {
+            $user =  User::find($auth->id);
+            $user->password =  Hash::make($request->new_password);
+            $user->save();
+            $arr = array('msg' =>__('passwords.updated'), 'status' => true);
+        }
+        return response()->json($arr);
+    }
+
+
 }
