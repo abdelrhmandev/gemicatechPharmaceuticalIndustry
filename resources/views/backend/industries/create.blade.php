@@ -11,13 +11,10 @@
     </ul>
 @stop
 @section('style')
+
     <link href="{{ asset('assets/backend/css/custom.css') }}" rel="stylesheet" type="text/css" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-
-
-        <link href="{{ asset('assets/backend/css/bootstrap-iconpicker.min.css') }}" rel="stylesheet" type="text/css" />
-
-
+    <link rel="stylesheet" href="https://appolodev.github.io/vanilla-icon-picker/dist/themes/bootstrap-5.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/scss/forms/_input-group.scss">
 @stop
 @section('content')
     <div id="kt_content_container" class="container-xxl">
@@ -41,8 +38,6 @@
                 <x-backend.cms.colors />
                 <x-backend.cms.iconsind />
 
-
-
             </div>
         </form>
     </div>
@@ -54,14 +49,36 @@
     <script src="{{ asset('assets/backend/js/widgets.bundle.js') }}"></script>
     <script src="{{ asset('assets/backend/js/custom/handleFormSubmit.js') }}"></script>
 
-    <script type="text/javascript" src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.bundle.min.js"></script>
-    <script src="{{ asset('assets/backend/js/bootstrap-iconpicker.bundle.min.js')}}"></script>
-
+    <script src="https://appolodev.github.io/vanilla-icon-picker/dist/icon-picker.min.js"></script>
     <script>
-
-        // end of tiny editor
         KTUtil.onDOMContentLoaded(function() {
             handleFormSubmitFunc('Add{{ $trans }}');
+        });
+        // Initialize icon picker for form 1
+        const iconPickerInput = new IconPicker('#Add{{ $trans }} #icon-picker', {
+            theme: 'bootstrap-5',
+            iconSource: [
+                'Iconoir',
+                'FontAwesome Solid 6',
+                {
+                    key: 'academicons',
+                    prefix: 'ai ai-',
+                    url: 'https://raw.githubusercontent.com/iconify/icon-sets/master/json/academicons.json'
+                }
+            ],
+            closeOnSelect: true
+        });
+
+        const iconElementInput = document.querySelector('.input-group-text');
+        iconPickerInput.on('select', (icon) => {
+            console.log('Icon Selected', icon);
+
+            if (iconElementInput.innerHTML !== '') {
+                iconElementInput.innerHTML = '';
+            }
+
+            iconElementInput.className = `input-group-text ${icon.name}`;
+            iconElementInput.innerHTML = icon.svg;
         });
     </script>
 @endpush

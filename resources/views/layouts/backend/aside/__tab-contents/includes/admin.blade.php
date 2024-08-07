@@ -39,7 +39,7 @@
             </div>
 
         </div>
-        <div data-kt-menu-trigger="click" class="menu-item menu-accordion">
+        <div data-kt-menu-trigger="click" class="menu-item menu-accordion d-none">
             <span class="menu-link">
                 <span class="menu-bullet">
                     <span class="bullet bullet-dot"></span>

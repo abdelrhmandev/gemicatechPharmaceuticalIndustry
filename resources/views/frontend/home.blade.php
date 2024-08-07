@@ -89,16 +89,17 @@
 
                 <div class="row g-4">
                     @foreach ($industries as $industry)
-                        <div class="col-lg-4 col-md-6">
-                            <a href="{{ route('industry', $industry->slug) }}">
-                                <div class="icon-box ind1">
-                                    <div class="icon" style="background: {{ $industry->color }};"><i
-                                            class="bi bi-thermometer-sun"></i></div>
-                                    <h4>{{ $industry->title }}</h4>
-                                    <p>{{ $industry->description }}</p>
-                                </div>
-                            </a>
-                        </div>
+                    <div class="col-lg-4 col-md-6">
+                        <a href="{{ route('industry', $industry->slug) }}">
+                            <div class="icon-box" id="iconbox{{ $industry->id }}" onmousemove="bgChange('{{ $industry->id }}','{{ $industry->color }}')" onmouseout="ResetbgChange('{{ $industry->id }}','{{ $industry->color }}')">
+                                <div class="icon" id="icon{{ $industry->id }}"
+                                style="background: {{ $industry->color }};"
+                                ><i class="{{ $industry->icon }}"></i></div>
+                                <h4>{{ $industry->title }}</h4>
+                                <p>{{ $industry->description }}</p>
+                            </div>
+                        </a>
+                    </div>
                     @endforeach
                 </div>
 
@@ -108,29 +109,33 @@
 
         <section id="clients" class="clients">
             <div class="container">
-
-                <div class="section-title">
-                    <h2>Our Brands</h2>
-                    <p>Gemicatech partners with the world’s most trusted manufacturers of high-precision instruments for
-                        General Lab & Lab Testing, Analytical & Measuring, Production Machines and Material Processing.</p>
-                </div>
-
-                <div class="clients-slider swiper">
-                    <div class="swiper-wrapper align-items-center">
-
-                        @foreach ($brands as $brand)
-                            <div class="swiper-slide">
-                                <a href="{{ route('brand', $brand->slug) }}" title="{{ $brand->title }}"><img
-                                        src="{{ asset($brand->image) }}" class="img-fluid" alt="{{ $brand->title }}"></a>
-                            </div>
-                        @endforeach
-
-                    </div>
-                    <div class="swiper-pagination"></div>
-                </div>
-
+                <x-frontend.brands :brand="$brand" :brands="$brands"/>
             </div>
         </section>
 
     </main>
 @stop
+
+@push('scripts')
+
+<script>
+    function bgChange(id,color) {
+
+
+        document.getElementById('iconbox'+id).style.background = color;
+        document.getElementById('iconbox'+id).style.color = '#fff';
+        document.getElementById('iconbox'+id).style.bordercolor = color;
+        document.getElementById('icon'+id).style.background = '#fff';
+
+
+
+    }
+    function ResetbgChange(id,color){
+
+        document.getElementById('icon'+id).style.background = color;
+        document.getElementById('iconbox'+id).style.background = '#fff';
+        document.getElementById('iconbox'+id).style.color = '#444444';
+        document.getElementById('iconbox'+id).style.bordercolor = '#fff';
+    }
+    </script>
+@endpush

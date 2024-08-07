@@ -111,10 +111,7 @@
                         <div class="menu-item px-5">
                             <a href="{{ route('admin.auth.logout') }}" class="menu-link px-5"
                                 onclick="event.preventDefault(); document.getElementById('logout-form').submit();">{{ __('site.logout') }}</a>
-                            <form id="logout-form" action="{{ route('admin.auth.logout') }}" method="POST"
-                                class="d-none">
-                                @csrf
-                            </form>
+                            <form id="logout-form" action="{{ route('admin.auth.logout') }}" method="POST" class="d-none">@csrf</form>
                         </div>
                         <!--end::Menu item-->
                     </div>

@@ -34,6 +34,7 @@ class HomeController extends Controller
             'industries' => Industry::select('id', 'title', 'image', 'color', 'icon', 'slug', 'description')->get(),
             'brands'    => Brand::select('id', 'title', 'slug', 'image', 'description')->get(),
             'about'    => Page::select('id','title','description','image','slug')->find('1'),
+            'brand'    => Page::select('id','title','description','image','slug')->find('5'),
         ];
 
 

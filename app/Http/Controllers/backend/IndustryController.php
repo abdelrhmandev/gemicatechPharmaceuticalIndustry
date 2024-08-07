@@ -21,6 +21,10 @@ class IndustryController extends Controller
         $this->ROUTE_PREFIX = 'admin.industries';
         $this->TRANS = 'industry';
         $this->UPLOADFOLDER = 'industries';
+        $this->middleware('permission:'.$this->TRANS.'-list,admin');
+        $this->middleware('permission:'.$this->TRANS.'-create,admin', ['only' => ['create','store']]);
+        $this->middleware('permission:'.$this->TRANS.'-edit,admin', ['only' => ['edit','update']]);
+        $this->middleware('permission:'.$this->TRANS.'-delete,admin', ['only' => ['destroy']]);
     }
 
     public function index(Request $request)

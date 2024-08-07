@@ -1,5 +1,13 @@
 @extends('frontend.base.base')
 @section('title', 'Brand | ' . $brand->title)
+@section('style')
+<style>
+    .cLogo{
+      max-width: 280px;
+      display: block;
+    }
+  </style>
+@endsection
 @section('content')
     <main id="main">
         <section id="breadcrumbs" class="breadcrumbs pharmaceutical">

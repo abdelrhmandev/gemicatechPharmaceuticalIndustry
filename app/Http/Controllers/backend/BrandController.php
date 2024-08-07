@@ -21,6 +21,10 @@ class BrandController extends Controller
         $this->ROUTE_PREFIX = 'admin.brands';
         $this->TRANS = 'brand';
         $this->UPLOADFOLDER = 'brands';
+        $this->middleware('permission:'.$this->TRANS.'-list,admin');
+        $this->middleware('permission:'.$this->TRANS.'-create,admin', ['only' => ['create','store']]);
+        $this->middleware('permission:'.$this->TRANS.'-edit,admin', ['only' => ['edit','update']]);
+        $this->middleware('permission:'.$this->TRANS.'-delete,admin', ['only' => ['destroy']]);
     }
 
     public function index(Request $request)

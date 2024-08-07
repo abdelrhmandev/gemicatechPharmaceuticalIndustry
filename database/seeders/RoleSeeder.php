@@ -25,23 +25,15 @@ class RoleSeeder extends Seeder
         ///////////////////
 
         $role = Role::create(['name' => 'Editor','guard_name'=>'admin']);
-        $role->givePermissionTo('category-create')
-        ->givePermissionTo(['product-list']);
+
 
 
         $role = Role::create(['name' => 'Writer','guard_name'=>'admin']);
-        $role->givePermissionTo('product-create')
-        ->givePermissionTo(['product-list'])
-        ->givePermissionTo(['post-list']);
 
         $role = Role::create(['name' => 'Data Entry','guard_name'=>'admin']);
-        $role->givePermissionTo('category-create')
-        ->givePermissionTo(['product-list']);
 
 
         $role = Role::create(['name' => 'Contributor','guard_name'=>'admin']);
-        $role->givePermissionTo('setting-create')
-        ->givePermissionTo(['setting-list']);
 
 
 

@@ -17,19 +17,24 @@
                 </span>
             </div>
 
-            @include('layouts.backend.aside.__tab-contents.includes.admin')
+
+            @role('Administrator', 'admin')
+                @include('layouts.backend.aside.__tab-contents.includes.admin')
+            @endrole
+
             @include('layouts.backend.aside.__tab-contents.includes.page')
             @include('layouts.backend.aside.__tab-contents.includes.product')
             @include('layouts.backend.aside.__tab-contents.includes.industry')
             @include('layouts.backend.aside.__tab-contents.includes.brand')
             @include('layouts.backend.aside.__tab-contents.includes.slider')
 
+            @role('Administrator', 'admin')
+                @include('layouts.backend.aside.__tab-contents.includes.setting')
 
-            @include('layouts.backend.aside.__tab-contents.includes.setting')
 
-            {{-- @include('layouts.backend.aside.__tab-contents.includes.menu')
+                {{-- @include('layouts.backend.aside.__tab-contents.includes.menu') --}}
+            @endrole
 
-            @include('layouts.backend.aside.__tab-contents.includes.social_network_links') --}}
         </div>
     </div>
 </div>

@@ -12,20 +12,23 @@
 @stop
 @section('style')
     <link href="{{ asset('assets/backend/css/custom.css') }}" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="https://appolodev.github.io/vanilla-icon-picker/dist/themes/bootstrap-5.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/scss/forms/_input-group.scss">
+
 @stop
 @section('content')
     <div id="kt_content_container" class="container-xxl">
         <form id="Edit{{ $trans }}" data-route-url="{{ $updateRoute }}" class="form d-flex flex-column flex-lg-row"
-        data-form-submit-error-message="{{ __('site.form_submit_error')}}"
-        data-form-agree-label="{{ __('site.agree') }}"
-        enctype="multipart/form-data">
-        <input type="hidden" name="id" value="{{ $row->id }}" />
-        @method('PUT')
+            data-form-submit-error-message="{{ __('site.form_submit_error') }}"
+            data-form-agree-label="{{ __('site.agree') }}" enctype="multipart/form-data">
+            <input type="hidden" name="id" value="{{ $row->id }}" />
+            @method('PUT')
             <div class="d-flex flex-column gap-3 gap-lg-7 w-100 mb-2 me-lg-5">
                 <div class="card card-flush py-0">
                     <div class="card-body pt-0">
                         <div class="d-flex flex-column gap-5 mt-5">
-                            <x-backend.cms.masterInputs :showDescription="1" :richTextArea="0" :showSlug="1" :row="$row" />
+                            <x-backend.cms.masterInputs :showDescription="1" :richTextArea="0" :showSlug="1"
+                                :row="$row" />
                         </div>
                     </div>
                 </div>
@@ -34,7 +37,7 @@
             <div class="d-flex flex-column flex-row-fluid gap-0 w-lg-400px gap-lg-5">
                 <x-backend.cms.image :image="$row->image" />
                 <x-backend.cms.colors :color="$row->color" />
-                <x-backend.cms.icons :icon="$row->icon" />
+                <x-backend.cms.iconsind :icon="$row->icon" />
 
             </div>
         </form>
@@ -48,10 +51,36 @@
     <script src="{{ asset('assets/backend/js/custom/handleFormSubmit.js') }}"></script>
     <script src="{{ asset('assets/backend/js/custom/deleteConfirmSwal.js') }}"></script>
 
+    <script src="https://appolodev.github.io/vanilla-icon-picker/dist/icon-picker.min.js"></script>
     <script>
-    // end of tiny editor
         KTUtil.onDOMContentLoaded(function() {
             handleFormSubmitFunc('Edit{{ $trans }}');
+        });
+        // Initialize icon picker for form 1
+        const iconPickerInput = new IconPicker('#Edit{{ $trans }} #icon-picker', {
+            theme: 'bootstrap-5',
+            iconSource: [
+                'Iconoir',
+                'FontAwesome Solid 6',
+                {
+                    key: 'academicons',
+                    prefix: 'ai ai-',
+                    url: 'https://raw.githubusercontent.com/iconify/icon-sets/master/json/academicons.json'
+                }
+            ],
+            closeOnSelect: true
+        });
+
+        const iconElementInput = document.querySelector('.input-group-text');
+        iconPickerInput.on('select', (icon) => {
+            console.log('Icon Selected', icon);
+
+            if (iconElementInput.innerHTML !== '') {
+                iconElementInput.innerHTML = '';
+            }
+
+            iconElementInput.className = `input-group-text ${icon.name}`;
+            iconElementInput.innerHTML = icon.svg;
         });
     </script>
 @endpush

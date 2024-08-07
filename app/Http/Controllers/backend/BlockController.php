@@ -18,9 +18,14 @@ class BlockController extends Controller
     use UploadAble, Functions;
     public function __construct()
     {
+
         $this->ROUTE_PREFIX = 'admin.blocks';
         $this->TRANS = 'block';
         $this->UPLOADFOLDER = 'blocks';
+        $this->middleware('permission:'.$this->TRANS.'-list,admin');
+        $this->middleware('permission:'.$this->TRANS.'-create,admin', ['only' => ['create','store']]);
+        $this->middleware('permission:'.$this->TRANS.'-edit,admin', ['only' => ['edit','update']]);
+        $this->middleware('permission:'.$this->TRANS.'-delete,admin', ['only' => ['destroy']]);
     }
 
     public function index(Request $request)

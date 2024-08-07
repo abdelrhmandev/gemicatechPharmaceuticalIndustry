@@ -19,9 +19,15 @@ class PageController extends Controller
     use UploadAble, Functions;
     public function __construct()
     {
+
         $this->ROUTE_PREFIX = 'admin.pages';
         $this->TRANS = 'page';
         $this->UPLOADFOLDER = 'pages';
+        $this->middleware('permission:'.$this->TRANS.'-list,admin');
+        $this->middleware('permission:'.$this->TRANS.'-create,admin', ['only' => ['create','store']]);
+        $this->middleware('permission:'.$this->TRANS.'-edit,admin', ['only' => ['edit','update']]);
+        $this->middleware('permission:'.$this->TRANS.'-delete,admin', ['only' => ['destroy']]);
+
     }
 
     public function index(Request $request)
