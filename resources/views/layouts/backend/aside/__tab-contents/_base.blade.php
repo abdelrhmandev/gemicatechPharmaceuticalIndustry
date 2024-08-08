@@ -22,21 +22,23 @@
                 @include('layouts.backend.aside.__tab-contents.includes.admin')
             @endrole
 
-            @if (Auth::guard('admin')->user()->can('page-list|page-create', 'admin'))
+
+
+            @if (Auth::guard('admin')->user()->hasAnyPermission(['page-list','page-create'], 'admin'))
                 @include('layouts.backend.aside.__tab-contents.includes.page')
             @endif
-            @if (Auth::guard('admin')->user()->can('product-list|product-create|category-list|category-create', 'admin'))
+            @if (Auth::guard('admin')->user()->hasAnyPermission(['product-list','product-create','category-list','category-create'], 'admin'))
                 @include('layouts.backend.aside.__tab-contents.includes.product')
             @endif
 
-            @if (Auth::guard('admin')->user()->can('industry-list|industry-create', 'admin'))
+            @if (Auth::guard('admin')->user()->hasAnyPermission(['industry-list','industry-create'], 'admin'))
                 @include('layouts.backend.aside.__tab-contents.includes.industry')
             @endif
-            @if (Auth::guard('admin')->user()->can('brand-list|brand-create', 'admin'))
+            @if (Auth::guard('admin')->user()->hasAnyPermission(['brand-list|brand-create'], 'admin'))
                 @include('layouts.backend.aside.__tab-contents.includes.brand')
             @endif
 
-            @if (Auth::guard('admin')->user()->can('slider-list|slider-create', 'admin'))
+            @if (Auth::guard('admin')->user()->hasAnyPermission(['slider-list|slider-create'], 'admin'))
                 @include('layouts.backend.aside.__tab-contents.includes.slider')
             @endif
 
