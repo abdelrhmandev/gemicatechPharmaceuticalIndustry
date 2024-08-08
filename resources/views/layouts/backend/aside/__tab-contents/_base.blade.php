@@ -30,8 +30,6 @@
 
             @role('Administrator', 'admin')
                 @include('layouts.backend.aside.__tab-contents.includes.setting')
-
-
                 {{-- @include('layouts.backend.aside.__tab-contents.includes.menu') --}}
             @endrole
 

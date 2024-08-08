@@ -20,6 +20,7 @@
                 <span class="menu-arrow"></span>
             </span>
             <div class="menu-sub menu-sub-accordion">
+                @can('page-list', 'admin')
                 <div class="menu-item">
                     <a class="menu-link" href="{{ route('admin.pages.index') }}">
                         <span class="menu-bullet">
@@ -28,6 +29,8 @@
                         <span class="menu-title">{{ __('site.all') }} {{ __('page.plural') }}</span>
                     </a>
                 </div>
+                @endcan
+                @can('page-add', 'admin')
                 <div class="menu-item">
                     <a class="menu-link" href="{{ route('admin.pages.create') }}">
                         <span class="menu-bullet">
@@ -36,6 +39,8 @@
                         <span class="menu-title">{{ __('page.add') }}</span>
                     </a>
                 </div>
+                @endcan
+                @can('block-list', 'admin')
                 <div class="menu-item">
                     <a class="menu-link" href="{{ route('admin.blocks.index') }}">
                         <span class="menu-bullet">
@@ -44,6 +49,7 @@
                         <span class="menu-title">{{ __('site.all') }} {{ __('block.plural') }}</span>
                     </a>
                 </div>
+                @endcan
 
 
             </div>
