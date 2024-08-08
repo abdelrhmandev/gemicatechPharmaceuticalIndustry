@@ -18,15 +18,15 @@
             </div>
 
 
-            @role('Administrator', 'admin')
+            {{-- @role('Administrator', 'admin')
                 @include('layouts.backend.aside.__tab-contents.includes.admin')
-            @endrole
+            @endrole --}}
 
-            @can('page-list|page-create', 'admin')
+            @can('page-list','admin')
                 @include('layouts.backend.aside.__tab-contents.includes.page')
             @endcan
 
-            @can('product-list|product-create|category-list|category-create', 'admin')
+            {{-- @can('product-list|product-create|category-list|category-create', 'admin')
                 @include('layouts.backend.aside.__tab-contents.includes.product')
             @endcan
 
@@ -40,12 +40,11 @@
 
             @can('slider-list|slider-create', 'admin')
                 @include('layouts.backend.aside.__tab-contents.includes.slider')
-            @endcan
+            @endcan --}}
 
-            @role('Administrator', 'admin')
+            {{-- @role('Administrator', 'admin')
                 @include('layouts.backend.aside.__tab-contents.includes.setting')
-                {{-- @include('layouts.backend.aside.__tab-contents.includes.menu') --}}
-            @endrole
+            @endrole --}}
 
         </div>
     </div>

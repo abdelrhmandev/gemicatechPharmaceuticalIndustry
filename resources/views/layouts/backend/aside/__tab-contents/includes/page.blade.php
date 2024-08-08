@@ -30,7 +30,7 @@
                     </a>
                 </div>
                 @endcan
-                @can('page-add', 'admin')
+                @can('page-create', 'admin')
                 <div class="menu-item">
                     <a class="menu-link" href="{{ route('admin.pages.create') }}">
                         <span class="menu-bullet">

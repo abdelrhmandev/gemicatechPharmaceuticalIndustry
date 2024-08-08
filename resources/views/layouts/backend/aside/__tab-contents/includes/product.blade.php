@@ -30,7 +30,7 @@
                     </a>
                 </div>
                 @endcan
-                @can('product-add', 'admin')
+                @can('product-create', 'admin')
                 <div class="menu-item">
                     <a class="menu-link" href="{{ route('admin.products.create') }}">
                         <span class="menu-bullet">
@@ -40,7 +40,7 @@
                     </a>
                 </div>
                 @endcan
-                @can('category-add', 'admin')
+                @can('category-create', 'admin')
                 <div class="menu-item">
                     <a class="menu-link" href="{{ route('admin.categories.index') }}">
                         <span class="menu-bullet">

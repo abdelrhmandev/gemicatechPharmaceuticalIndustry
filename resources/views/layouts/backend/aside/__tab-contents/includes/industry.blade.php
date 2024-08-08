@@ -30,7 +30,7 @@
                     </a>
                 </div>
                 @endcan
-                @can('industry-add', 'admin')
+                @can('industry-create', 'admin')
                 <div class="menu-item">
                     <a class="menu-link" href="{{ route('admin.industries.create') }}">
                         <span class="menu-bullet">
