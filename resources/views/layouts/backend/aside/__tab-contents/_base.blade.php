@@ -34,11 +34,11 @@
             @if (Auth::guard('admin')->user()->hasAnyPermission(['industry-list','industry-create'], 'admin'))
                 @include('layouts.backend.aside.__tab-contents.includes.industry')
             @endif
-            @if (Auth::guard('admin')->user()->hasAnyPermission(['brand-list|brand-create'], 'admin'))
+            @if (Auth::guard('admin')->user()->hasAnyPermission(['brand-list','brand-create'], 'admin'))
                 @include('layouts.backend.aside.__tab-contents.includes.brand')
             @endif
 
-            @if (Auth::guard('admin')->user()->hasAnyPermission(['slider-list|slider-create'], 'admin'))
+            @if (Auth::guard('admin')->user()->hasAnyPermission(['slider-list','slider-create'], 'admin'))
                 @include('layouts.backend.aside.__tab-contents.includes.slider')
             @endif
 
