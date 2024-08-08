@@ -35,7 +35,7 @@
         <div class="d-flex justify-content-end" data-kt-table-toolbar="base">
 
           @include('backend.partials.modals._exportlisting')
-          @can($trans.'-add', 'admin')
+          @can($trans.'-create', 'admin')
           <a class="btn btn-primary" href="{{ $createRoute }}">
             <span class="svg-icon svg-icon-2 svg-icon-primary me-0 me-md-2">
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">

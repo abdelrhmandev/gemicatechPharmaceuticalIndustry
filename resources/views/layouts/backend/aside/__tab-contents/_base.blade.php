@@ -22,23 +22,23 @@
                 @include('layouts.backend.aside.__tab-contents.includes.admin')
             @endrole
 
-            @can('page-list|page-add', 'admin')
+            @can('page-list|page-create', 'admin')
                 @include('layouts.backend.aside.__tab-contents.includes.page')
             @endcan
 
-            @can('product-list|product-add|category-list|category-add|', 'admin')
+            @can('product-list|product-create|category-list|category-create', 'admin')
                 @include('layouts.backend.aside.__tab-contents.includes.product')
             @endcan
 
-            @can('industry-list|industry-add', 'admin')
+            @can('industry-list|industry-create', 'admin')
                 @include('layouts.backend.aside.__tab-contents.includes.industry')
             @endcan
 
-            @can('brand-list|brand-add', 'admin')
+            @can('brand-list|brand-create', 'admin')
                 @include('layouts.backend.aside.__tab-contents.includes.brand')
             @endcan
 
-            @can('slider-list|slider-add', 'admin')
+            @can('slider-list|slider-create', 'admin')
                 @include('layouts.backend.aside.__tab-contents.includes.slider')
             @endcan
 
