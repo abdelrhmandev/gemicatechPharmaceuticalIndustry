@@ -22,11 +22,25 @@
                 @include('layouts.backend.aside.__tab-contents.includes.admin')
             @endrole
 
-            @include('layouts.backend.aside.__tab-contents.includes.page')
-            @include('layouts.backend.aside.__tab-contents.includes.product')
-            @include('layouts.backend.aside.__tab-contents.includes.industry')
-            @include('layouts.backend.aside.__tab-contents.includes.brand')
-            @include('layouts.backend.aside.__tab-contents.includes.slider')
+            @can('page-list|page-add', 'admin')
+                @include('layouts.backend.aside.__tab-contents.includes.page')
+            @endcan
+
+            @can('product-list|product-add|category-list|category-add|', 'admin')
+                @include('layouts.backend.aside.__tab-contents.includes.product')
+            @endcan
+
+            @can('industry-list|industry-add', 'admin')
+                @include('layouts.backend.aside.__tab-contents.includes.industry')
+            @endcan
+
+            @can('brand-list|brand-add', 'admin')
+                @include('layouts.backend.aside.__tab-contents.includes.brand')
+            @endcan
+
+            @can('slider-list|slider-add', 'admin')
+                @include('layouts.backend.aside.__tab-contents.includes.slider')
+            @endcan
 
             @role('Administrator', 'admin')
                 @include('layouts.backend.aside.__tab-contents.includes.setting')
