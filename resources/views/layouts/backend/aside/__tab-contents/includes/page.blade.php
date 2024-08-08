@@ -20,7 +20,7 @@
                 <span class="menu-arrow"></span>
             </span>
             <div class="menu-sub menu-sub-accordion">
-                @can('page-list', 'admin')
+                @if (Auth::guard('admin')->user()->can('page-list', 'admin'))
                 <div class="menu-item">
                     <a class="menu-link" href="{{ route('admin.pages.index') }}">
                         <span class="menu-bullet">
@@ -29,8 +29,8 @@
                         <span class="menu-title">{{ __('site.all') }} {{ __('page.plural') }}</span>
                     </a>
                 </div>
-                @endcan
-                @can('page-create', 'admin')
+                @endif
+                @if (Auth::guard('admin')->user()->can('page-create', 'admin'))
                 <div class="menu-item">
                     <a class="menu-link" href="{{ route('admin.pages.create') }}">
                         <span class="menu-bullet">
@@ -40,7 +40,7 @@
                     </a>
                 </div>
                 @endcan
-                @can('block-list', 'admin')
+                @if (Auth::guard('admin')->user()->can('block-list', 'admin'))
                 <div class="menu-item">
                     <a class="menu-link" href="{{ route('admin.blocks.index') }}">
                         <span class="menu-bullet">
@@ -49,7 +49,7 @@
                         <span class="menu-title">{{ __('site.all') }} {{ __('block.plural') }}</span>
                     </a>
                 </div>
-                @endcan
+                @endif
 
 
             </div>

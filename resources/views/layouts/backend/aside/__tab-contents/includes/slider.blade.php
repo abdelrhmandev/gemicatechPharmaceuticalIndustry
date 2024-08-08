@@ -20,7 +20,7 @@
                 <span class="menu-arrow"></span>
             </span>
             <div class="menu-sub menu-sub-accordion">
-                @can('slider-list', 'admin')
+                @if (Auth::guard('admin')->user()->can('slider-list', 'admin'))
                 <div class="menu-item">
                     <a class="menu-link" href="{{ route('admin.sliders.index') }}">
                         <span class="menu-bullet">
@@ -29,8 +29,8 @@
                         <span class="menu-title">{{ __('site.all') }} {{ __('slider.plural') }}</span>
                     </a>
                 </div>
-                @endcan
-                @can('slider-add', 'admin')
+                @endif
+                @if (Auth::guard('admin')->user()->can('slider-add', 'admin'))
                 <div class="menu-item">
                     <a class="menu-link" href="{{ route('admin.sliders.create') }}">
                         <span class="menu-bullet">
@@ -39,7 +39,7 @@
                         <span class="menu-title">{{ __('slider.add') }}</span>
                     </a>
                 </div>
-                @endcan
+                @endif
             </div>
         </div>
 

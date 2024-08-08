@@ -20,7 +20,7 @@
                 <span class="menu-arrow"></span>
             </span>
             <div class="menu-sub menu-sub-accordion">
-                @can('brand-list', 'admin')
+                @if (Auth::guard('admin')->user()->can('brand-list', 'admin'))
                 <div class="menu-item">
                     <a class="menu-link" href="{{ route('admin.brands.index') }}">
                         <span class="menu-bullet">
@@ -29,8 +29,8 @@
                         <span class="menu-title">{{ __('site.all') }} {{ __('brand.plural') }}</span>
                     </a>
                 </div>
-                @endcan
-                @can('industry-create', 'admin')
+                @endif
+                @if (Auth::guard('admin')->user()->can('brand-create', 'admin'))
                 <div class="menu-item">
                     <a class="menu-link" href="{{ route('admin.brands.create') }}">
                         <span class="menu-bullet">
@@ -39,7 +39,7 @@
                         <span class="menu-title">{{ __('brand.add') }}</span>
                     </a>
                 </div>
-                @endcan
+                @endif
 
 
             </div>

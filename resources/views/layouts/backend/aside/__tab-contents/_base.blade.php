@@ -18,33 +18,31 @@
             </div>
 
 
-            {{-- @role('Administrator', 'admin')
+            @role('Administrator', 'admin')
                 @include('layouts.backend.aside.__tab-contents.includes.admin')
-            @endrole --}}
+            @endrole
 
-            @can('page-list','admin')
+            @if (Auth::guard('admin')->user()->can('page-list|page-create', 'admin'))
                 @include('layouts.backend.aside.__tab-contents.includes.page')
-            @endcan
-
-            {{-- @can('product-list|product-create|category-list|category-create', 'admin')
+            @endif
+            @if (Auth::guard('admin')->user()->can('product-list|product-create|category-list|category-create', 'admin'))
                 @include('layouts.backend.aside.__tab-contents.includes.product')
-            @endcan
+            @endif
 
-            @can('industry-list|industry-create', 'admin')
+            @if (Auth::guard('admin')->user()->can('industry-list|industry-create', 'admin'))
                 @include('layouts.backend.aside.__tab-contents.includes.industry')
-            @endcan
-
-            @can('brand-list|brand-create', 'admin')
+            @endif
+            @if (Auth::guard('admin')->user()->can('brand-list|brand-create', 'admin'))
                 @include('layouts.backend.aside.__tab-contents.includes.brand')
-            @endcan
+            @endif
 
-            @can('slider-list|slider-create', 'admin')
+            @if (Auth::guard('admin')->user()->can('slider-list|slider-create', 'admin'))
                 @include('layouts.backend.aside.__tab-contents.includes.slider')
-            @endcan --}}
+            @endif
 
-            {{-- @role('Administrator', 'admin')
+            @role('Administrator', 'admin')
                 @include('layouts.backend.aside.__tab-contents.includes.setting')
-            @endrole --}}
+            @endrole
 
         </div>
     </div>
