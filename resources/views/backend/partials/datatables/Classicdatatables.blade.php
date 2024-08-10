@@ -119,7 +119,9 @@ function loadDatatable(tableId,RouteListing,dynamicColumns,StatusColumn=null,Tit
                 const destroy = document.getElementById('delete_item');
                 deleteButtons.forEach(d => {
                 d.addEventListener('click', function (e) {
-                    e.preventDefault();
+
+                    const destroyUrl = d.getAttribute("data-destroy-route");
+
                     const parent = e.target.closest('tr');
                     const itemName = '<strong><u>'+parent.querySelectorAll('td')[TitleColumnOrder].innerText+'</u></strong>';
                 Swal.fire({
@@ -141,9 +143,8 @@ function loadDatatable(tableId,RouteListing,dynamicColumns,StatusColumn=null,Tit
                         headers: {
                             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                         },
-                        url: destroy.getAttribute("data-destroy-route"),
+                        url: destroyUrl,
                         data: {
-                            'id':destroy.getAttribute("data-id"),
                             '_method': 'delete',
                         },
                         success: function(response, textStatus, xhr) {
