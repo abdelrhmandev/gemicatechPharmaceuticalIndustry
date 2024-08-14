@@ -6,8 +6,8 @@
     </button>
     <button onclick="document.location.href = '{{ $cancelroute ?? '' }}' " type="reset" id="cancel"
         class="btn btn-outline btn-outline-dashed btn-outline-dark btn-active-light-dark me-5">{{ __('site.cancel') }}</button>
-    @if (Auth::guard('admin')->user()->can($trans . '-delete', 'admin'))
-        @isset($destroyRoute)
+    @isset($destroyRoute)
+        @if (Auth::guard('admin')->user()->can($trans . '-delete', 'admin'))
             <button id="delete_item" data-back-list-text="{{ __('site.back_to_list') }}"
                 data-destroy-route = "{{ $destroyRoute }}"
                 data-confirm-message = "{{ __('site.confirmDeleteMessage', ['item' => __($trans . '.singular')]) }}"
@@ -22,6 +22,6 @@
                 <i class="fa fa-trash-alt"></i>
                 {{ __('site.delete') }}
             </button>
-        @endisset
-    @endif
+        @endif
+    @endisset
 </div>

@@ -13,7 +13,7 @@ class ContactusController extends Controller
     public function store(ContactusRequest $request)
     {
 
-
+        // https://significanttechno.com/how-to-add-google-recaptcha-to-laravel-forms
         $mailData = [
             'name' => $request->get('name'),
             'email' => $request->get('email'),
