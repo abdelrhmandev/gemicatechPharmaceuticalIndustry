@@ -3,10 +3,10 @@
         Options -MultiViews -Indexes
     </IfModule>
 
-    <fileMatch "(.env|package.json|package.lock|composer.json|composer.lock|webpack.minx.js|artisan.php)">
+    <FilesMatch "(\.env|package\.json|package\.lock|composer\.json|composer\.lock|webpack\.minx\.js|artisan\.php)">
         Order allow,deny
         Deny from all
-    </fileMatch>
+    </FilesMatch>
 
     # Handle Authorization Header
     RewriteCond %{HTTP:Authorization} .
